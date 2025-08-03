@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPTV Player v8 Enhanced</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
+  
+  <style>
+    :root {
+      --primary-color: #00A848;
+      --primary-gradient: linear-gradient(135deg, #00A848, #00c851);
+      --bg-primary: #1f1f1f;
+      --bg-secondary: #252525;
+      --bg-tertiary: #303030;
+      --bg-quaternary: #404040;
+      --text-primary: #ffffff;
+      --text-secondary: #9CA3AF;
+      --text-tertiary: #D1D5DB;
+      --border-radius: 12px;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+      --animation-duration: 0.3s;
+    }
+
+    /* Enhanced Themes */
+    [data-theme="dark"] {
+      --primary-color: #ffffff;
+      --primary-gradient: linear-gradient(135deg, #333333, #555555);
+      --bg-primary: #000000;
+      --bg-secondary: #111111;
+      --bg-tertiary: #222222;
+      --bg-quaternary: #333333;
+    }
+
+    [data-theme="light"] {
+      --primary-color: #007bff;
+      --primary-gradient: linear-gradient(135deg, #007bff, #0056b3);
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8f9fa;
+      --bg-tertiary: #e9ecef;
+      --bg-quaternary: #dee2e6;
+      --text-primary: #212529;
+      --text-secondary: #6c757d;
+      --text-tertiary: #495057;
+    }
+
+    [data-theme="blue"] {
+      --primary-color: #007bff;
+      --primary-gradient: linear-gradient(135deg, #007bff, #0056b3);
+      --bg-primary: #0d1117;
+      --bg-secondary: #161b22;
+      --bg-tertiary: #21262d;
+      --bg-quaternary: #30363d;
+    }
+
+    [data-theme="red"] {
+      --primary-color: #dc3545;
+      --primary-gradient: linear-gradient(135deg, #dc3545, #c82333);
+      --bg-primary: #1a0d0d;
+      --bg-secondary: #2d1b1b;
+      --bg-tertiary: #3d2626;
+      --bg-quaternary: #4d3131;
+    }
+
+    [data-theme="green"] {
+      --primary-color: #28a745;
+      --primary-gradient: linear-gradient(135deg, #28a745, #1e7e34);
+      --bg-primary: #0d1a0d;
+      --bg-secondary: #1b2d1b;
+      --bg-tertiary: #263d26;
+      --bg-quaternary: #314d31;
+    }
+
+    /* Base Styles */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+    }
+    
+    /* Enhanced Header */
+    .header {
+      background: var(--primary-gradient);
+      padding: 1rem;
+      box-shadow: var(--shadow-lg);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 3px solid rgba(255,255,255,0.1);
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: clamp(1.2rem, 4vw, 1.6rem);
+      font-weight: 700;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .header-btn {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      color: white;
+      transition: all var(--animation-duration) ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .header-btn:hover {
+      background: rgba(255,255,255,0.25);
+      transform: scale(1.1) translateY(-2px);
+      color: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Enhanced Video Player */
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: linear-gradient(135deg, #000, #1a1a1a);
+      overflow: hidden;
+      border-radius: var(--border-radius);
+      margin: 1rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    #videoPlayer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--border-radius);
+    }
+
+    /* Loading Spinner */
+    .loading-spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 200;
+      display: none;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255,255,255,0.3);
+      border-top: 4px solid var(--primary-color);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Enhanced Navigation */
+    .main-nav {
+      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+      padding: 1rem 0;
+      border-bottom: 2px solid var(--bg-quaternary);
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .main-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .main-nav .nav-tabs {
+      border: none;
+      justify-content: center;
+      flex-wrap: nowrap;
+      min-width: max-content;
+      gap: 0.5rem;
+    }
+
+    .main-nav .nav-link {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--border-radius);
+      color: var(--text-secondary);
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all var(--animation-duration) ease;
+      white-space: nowrap;
+      backdrop-filter: blur(5px);
+    }
+
+    .main-nav .nav-link:hover {
+      color: var(--text-tertiary);
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .main-nav .nav-link.active {
+      color: white;
+      background: var(--primary-gradient);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Enhanced Content List */
+    .content-list {
+      background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+      max-height: 60vh;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary-color) var(--bg-tertiary);
+      border-radius: var(--border-radius);
+      margin: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .content-list::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .content-list::-webkit-scrollbar-track {
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+    }
+
+    .content-list::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 4px;
+    }
+
+    .content-item {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: all var(--animation-duration) ease;
+      position: relative;
+      backdrop-filter: blur(5px);
+    }
+
+    .content-item:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateX(8px);
+      box-shadow: var(--shadow);
+    }
+
+    .content-item.playing {
+      background: linear-gradient(90deg, rgba(0, 168, 72, 0.2), transparent);
+      border-left: 4px solid var(--primary-color);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Error Handling Display */
+    .error-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      backdrop-filter: blur(10px);
+    }
+
+    .error-content {
+      background: var(--bg-tertiary);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+      max-width: 90%;
+      width: 400px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Connection Status Indicator */
+    .connection-status {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      background: var(--bg-tertiary);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .status-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #28a745;
+      animation: pulse 2s infinite;
+    }
+
+    .status-indicator.offline {
+      background: #dc3545;
+    }
+
+    .status-indicator.loading {
+      background: #ffc107;
+    }
+
+    /* Enhanced Search */
+    .search-container {
+      position: relative;
+      margin: 1rem;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: var(--border-radius);
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all var(--animation-duration) ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(0, 168, 72, 0.1);
+      background: var(--bg-secondary);
+    }
+
+    /* Performance Metrics */
+    .performance-metrics {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 0.5rem;
+      border-radius: var(--border-radius);
+      font-size: 0.8rem;
+      font-family: monospace;
+      display: none;
+      z-index: 999;
+    }
+
+    /* Mobile Optimizations */
+    @media (max-width: 768px) {
+      .header {
+        padding: 0.75rem;
+      }
+      
+      .video-container {
+        margin: 0.5rem;
+      }
+      
+      .content-list {
+        margin: 0.5rem;
+        max-height: 50vh;
+      }
+      
+      .header-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+    }
+
+    /* Custom Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    /* Quality Selector */
+    .quality-selector {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 300;
+    }
+
+    .quality-btn {
+      background: rgba(0,0,0,0.7);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all var(--animation-duration) ease;
+    }
+
+    .quality-btn:hover {
+      background: rgba(0,0,0,0.9);
+      border-color: var(--primary-color);
+    }
+
+    /* Toast Notifications */
+    .toast-container {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      z-index: 9999;
+    }
+
+    .custom-toast {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--border-radius);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-lg);
+    }
+  </style>
+</head>
+
+<body data-theme="green">
+  <!-- Header -->
+  <header class="header d-flex justify-content-between align-items-center">
+    <h1><i class="fas fa-tv me-2"></i>IPTV Player v8 Enhanced</h1>
+    <div class="header-buttons">
+      <button class="header-btn" data-bs-toggle="modal" data-bs-target="#settingsModal" title="Configurações">
+        <i class="fas fa-cog"></i>
+      </button>
+      <button class="header-btn" data-bs-toggle="modal" data-bs-target="#searchModal" title="Buscar">
+        <i class="fas fa-search"></i>
+      </button>
+      <button class="header-btn" onclick="iptvApp.toggleFullscreen()" title="Tela Cheia">
+        <i class="fas fa-expand"></i>
+      </button>
+      <button class="header-btn" onclick="iptvApp.shareApp()" title="Compartilhar">
+        <i class="fas fa-share-alt"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Connection Status -->
+  <div class="connection-status">
+    <div class="status-indicator" id="connectionIndicator"></div>
+    <span id="connectionText">Conectado</span>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container"></div>
+
+  <!-- Performance Metrics -->
+  <div class="performance-metrics" id="performanceMetrics">
+    <div>Latência: <span id="latency">-</span>ms</div>
+    <div>Buffer: <span id="bufferHealth">-</span>%</div>
+    <div>FPS: <span id="fps">-</span></div>
+  </div>
+
+  <!-- Video Player -->
+  <div class="video-container">
+    <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
+      <source src="" type="application/x-mpegURL">
+      <p class="vjs-no-js">
+        Para assistir esse vídeo, por favor habilite JavaScript e considere atualizar para um 
+        <a href="https://videojs.com/html5-video-support/" target="_blank">
+          navegador que suporte HTML5 video
+        </a>.
+      </p>
+    </video>
+    
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Quality Selector -->
+    <div class="quality-selector">
+      <select class="quality-btn" id="qualitySelector">
+        <option value="auto">Auto</option>
+        <option value="1080">1080p</option>
+        <option value="720">720p</option>
+        <option value="480">480p</option>
+        <option value="360">360p</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Search Container -->
+  <div class="search-container">
+    <input type="text" class="search-input" id="globalSearch" placeholder="🔍 Buscar canais, filmes, séries..." autocomplete="off">
+  </div>
+
+  <!-- Main Navigation -->
+  <nav class="main-nav">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-content="channels">
+          <i class="fas fa-tv me-2"></i>Canais
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-content="movies">
+          <i class="fas fa-film me-2"></i>Filmes
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-content="series">
+          <i class="fas fa-video me-2"></i>Séries
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-content="radios">
+          <i class="fas fa-radio me-2"></i>Rádios
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-content="favorites">
+          <i class="fas fa-heart me-2"></i>Favoritos
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Content Sections -->
+  <div id="channelsSection" class="content-section active">
+    <div class="content-list" id="channelsList"></div>
+  </div>
+
+  <div id="moviesSection" class="content-section" style="display: none;">
+    <div class="content-list" id="moviesList"></div>
+  </div>
+
+  <div id="seriesSection" class="content-section" style="display: none;">
+    <div class="content-list" id="seriesList"></div>
+  </div>
+
+  <div id="radiosSection" class="content-section" style="display: none;">
+    <div class="content-list" id="radiosList"></div>
+  </div>
+
+  <div id="favoritesSection" class="content-section" style="display: none;">
+    <div class="content-list" id="favoritesList"></div>
+  </div>
+
+  <!-- Enhanced Error Overlay -->
+  <div class="error-overlay" id="errorOverlay">
+    <div class="error-content">
+      <i class="fas fa-exclamation-triangle fa-3x mb-3 text-warning"></i>
+      <h4>Erro de Conexão</h4>
+      <p id="errorMessage">Não foi possível conectar ao servidor</p>
+      <div class="mt-3">
+        <button class="btn btn-primary me-2" onclick="iptvApp.retryConnection()">
+          <i class="fas fa-redo me-2"></i>Tentar Novamente
+        </button>
+        <button class="btn btn-secondary" onclick="this.closest('.error-overlay').style.display='none'">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal fade" id="settingsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title">⚙️ Configurações Avançadas</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <h6>🎨 Tema</h6>
+              <select class="form-select mb-3" id="themeSelector">
+                <option value="green">Verde (Padrão)</option>
+                <option value="dark">Escuro</option>
+                <option value="light">Claro</option>
+                <option value="blue">Azul</option>
+                <option value="red">Vermelho</option>
+              </select>
+
+              <h6>📱 Configurações de Player</h6>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="autoplay" checked>
+                <label class="form-check-label" for="autoplay">Auto-play</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="showMetrics">
+                <label class="form-check-label" for="showMetrics">Exibir métricas de performance</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="enableRetry" checked>
+                <label class="form-check-label" for="enableRetry">Retry automático em falhas</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h6>🌐 Configurações de Rede</h6>
+              <label class="form-label">Timeout de Conexão (ms)</label>
+              <input type="number" class="form-control mb-3" id="connectionTimeout" value="10000" min="5000" max="30000">
+              
+              <label class="form-label">Buffer Size (segundos)</label>
+              <input type="number" class="form-control mb-3" id="bufferSize" value="30" min="10" max="120">
+
+              <label class="form-label">Max Retry Attempts</label>
+              <input type="number" class="form-control mb-3" id="maxRetries" value="3" min="1" max="10">
+
+              <h6>📊 Cache</h6>
+              <button class="btn btn-warning w-100" onclick="iptvApp.clearCache()">
+                <i class="fas fa-trash me-2"></i>Limpar Cache
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" onclick="iptvApp.saveSettings()" data-bs-dismiss="modal">
+            Salvar Configurações
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title">🔍 Busca Avançada</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control mb-3" id="advancedSearch" placeholder="Digite sua busca...">
+          
+          <h6>Filtros:</h6>
+          <div class="row mb-3">
+            <div class="col-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="searchChannels" checked>
+                <label class="form-check-label" for="searchChannels">Canais</label>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="searchMovies" checked>
+                <label class="form-check-label" for="searchMovies">Filmes</label>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="searchSeries" checked>
+                <label class="form-check-label" for="searchSeries">Séries</label>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="searchRadios" checked>
+                <label class="form-check-label" for="searchRadios">Rádios</label>
+              </div>
+            </div>
+          </div>
+
+          <div id="searchResults" class="search-results"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    class EnhancedIPTVApp {
+      constructor() {
+        this.config = this.loadConfig();
+        this.cache = new Map();
+        this.performanceMonitor = new PerformanceMonitor();
+        this.connectionManager = new ConnectionManager();
+        this.player = null;
+        this.currentItem = null;
+        this.retryCount = 0;
+        this.maxRetries = 3;
+        this.connectionTimeout = 10000;
+        this.bufferSize = 30;
+        
+        this.init();
+      }
+
+      async init() {
+        this.setupEventListeners();
+        this.loadSettings();
+        await this.connectionManager.initialize();
+        this.showConnectionStatus('Conectando...', 'loading');
+        
+        if (this.config.server) {
+          await this.loadAllContent();
+          this.showConnectionStatus('Conectado', 'online');
+        } else {
+          this.showConnectionStatus('Configuração necessária', 'offline');
+        }
+
+        this.setupPerformanceMonitoring();
+        this.initializePlayer();
+      }
+
+      setupEventListeners() {
+        // Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const content = e.target.closest('.nav-link').dataset.content;
+            this.showContentSection(content);
+          });
+        });
+
+        // Global search
+        const globalSearch = document.getElementById('globalSearch');
+        globalSearch.addEventListener('input', (e) => {
+          this.debounce(() => this.performGlobalSearch(e.target.value), 300)();
+        });
+
+        // Advanced search
+        const advancedSearch = document.getElementById('advancedSearch');
+        advancedSearch.addEventListener('input', (e) => {
+          this.debounce(() => this.performAdvancedSearch(e.target.value), 300)();
+        });
+
+        // Settings
+        document.getElementById('themeSelector').addEventListener('change', (e) => {
+          this.changeTheme(e.target.value);
+        });
+
+        document.getElementById('showMetrics').addEventListener('change', (e) => {
+          this.togglePerformanceMetrics(e.target.checked);
+        });
+
+        // Quality selector
+        document.getElementById('qualitySelector').addEventListener('change', (e) => {
+          this.changeQuality(e.target.value);
+        });
+
+        // Online/offline detection
+        window.addEventListener('online', () => {
+          this.showConnectionStatus('Conectado', 'online');
+          this.retryConnection();
+        });
+
+        window.addEventListener('offline', () => {
+          this.showConnectionStatus('Offline', 'offline');
+        });
+      }
+
+      initializePlayer() {
+        const player = videojs('videoPlayer', {
+          fluid: true,
+          responsive: true,
+          playbackRates: [0.5, 1, 1.25, 1.5, 2],
+          plugins: {
+            httpSourceSelector: {
+              default: 'auto'
+            }
+          }
+        });
+
+        player.ready(() => {
+          console.log('Player ready');
+          this.player = player;
+          this.setupPlayerEvents();
+        });
+      }
+
+      setupPlayerEvents() {
+        if (!this.player) return;
+
+        this.player.on('loadstart', () => {
+          this.showLoadingSpinner(true);
+          this.performanceMonitor.startSession();
+        });
+
+        this.player.on('canplay', () => {
+          this.showLoadingSpinner(false);
+          this.performanceMonitor.recordLoadTime();
+        });
+
+        this.player.on('error', (e) => {
+          this.handlePlayerError(e);
+        });
+
+        this.player.on('waiting', () => {
+          this.performanceMonitor.recordBuffering(true);
+        });
+
+        this.player.on('playing', () => {
+          this.performanceMonitor.recordBuffering(false);
+        });
+
+        this.player.on('timeupdate', () => {
+          this.performanceMonitor.updateMetrics();
+        });
+      }
+
+      async loadAllContent() {
+        try {
+          await Promise.all([
+            this.loadChannels(),
+            this.loadMovies(),
+            this.loadSeries(),
+            this.loadRadios()
+          ]);
+        } catch (error) {
+          console.error('Erro ao carregar conteúdo:', error);
+          this.showError('Erro ao carregar conteúdo: ' + error.message);
+        }
+      }
+
+      async loadChannels() {
+        try {
+          const cacheKey = 'channels';
+          if (this.cache.has(cacheKey)) {
+            this.displayChannels(this.cache.get(cacheKey));
+            return;
+          }
+
+          const response = await this.connectionManager.fetchWithRetry(
+            `${this.config.server}/player_api.php?username=${this.config.username}&password=${this.config.password}&action=get_live_categories`
+          );
+
+          // ... resto da implementação de carregamento de canais
+          this.displayChannels(response);
+          this.cache.set(cacheKey, response);
+        } catch (error) {
+          this.handleError('Erro ao carregar canais', error);
+        }
+      }
+
+      async performGlobalSearch(query) {
+        if (!query || query.length < 2) {
+          this.clearSearchResults();
+          return;
+        }
+
+        const results = await this.searchContent(query);
+        this.displaySearchResults(results);
+      }
+
+      async searchContent(query) {
+        const searchPromises = [];
+        
+        // Search across all content types
+        if (this.cache.has('channels')) {
+          searchPromises.push(this.searchInContent(this.cache.get('channels'), query, 'channel'));
+        }
+        
+        if (this.cache.has('movies')) {
+          searchPromises.push(this.searchInContent(this.cache.get('movies'), query, 'movie'));
+        }
+        
+        if (this.cache.has('series')) {
+          searchPromises.push(this.searchInContent(this.cache.get('series'), query, 'series'));
+        }
+        
+        if (this.cache.has('radios')) {
+          searchPromises.push(this.searchInContent(this.cache.get('radios'), query, 'radio'));
+        }
+
+        const results = await Promise.all(searchPromises);
+        return results.flat();
+      }
+
+      searchInContent(content, query, type) {
+        return content.filter(item => 
+          item.name && item.name.toLowerCase().includes(query.toLowerCase())
+        ).map(item => ({ ...item, type }));
+      }
+
+      displaySearchResults(results) {
+        // Implementation for displaying search results
+        console.log('Search results:', results);
+      }
+
+      showConnectionStatus(text, status) {
+        const indicator = document.getElementById('connectionIndicator');
+        const textEl = document.getElementById('connectionText');
+        
+        indicator.className = `status-indicator ${status}`;
+        textEl.textContent = text;
+      }
+
+      showLoadingSpinner(show) {
+        const spinner = document.getElementById('loadingSpinner');
+        spinner.style.display = show ? 'block' : 'none';
+      }
+
+      togglePerformanceMetrics(show) {
+        const metrics = document.getElementById('performanceMetrics');
+        metrics.style.display = show ? 'block' : 'none';
+        this.performanceMonitor.enabled = show;
+      }
+
+      setupPerformanceMonitoring() {
+        if (this.performanceMonitor.enabled) {
+          setInterval(() => {
+            this.updatePerformanceDisplay();
+          }, 1000);
+        }
+      }
+
+      updatePerformanceDisplay() {
+        if (!this.performanceMonitor.enabled) return;
+
+        const latency = this.performanceMonitor.getLatency();
+        const bufferHealth = this.performanceMonitor.getBufferHealth();
+        const fps = this.performanceMonitor.getFPS();
+
+        document.getElementById('latency').textContent = latency;
+        document.getElementById('bufferHealth').textContent = bufferHealth;
+        document.getElementById('fps').textContent = fps;
+      }
+
+      async retryConnection() {
+        if (this.retryCount >= this.maxRetries) {
+          this.showError('Máximo de tentativas excedido');
+          return;
+        }
+
+        this.retryCount++;
+        this.showConnectionStatus(`Tentativa ${this.retryCount}/${this.maxRetries}`, 'loading');
+        
+        try {
+          await this.loadAllContent();
+          this.showConnectionStatus('Conectado', 'online');
+          this.retryCount = 0;
+        } catch (error) {
+          setTimeout(() => this.retryConnection(), 2000 * this.retryCount);
+        }
+      }
+
+      handlePlayerError(error) {
+        console.error('Player error:', error);
+        
+        if (this.enableRetry && this.retryCount < this.maxRetries) {
+          this.showToast('Erro de reprodução, tentando novamente...', 'warning');
+          setTimeout(() => this.retryCurrentStream(), 1000);
+        } else {
+          this.showError('Erro na reprodução: ' + (error.message || 'Erro desconhecido'));
+        }
+      }
+
+      retryCurrentStream() {
+        if (this.currentItem && this.player) {
+          this.retryCount++;
+          this.playContent(this.currentItem);
+        }
+      }
+
+      changeQuality(quality) {
+        if (this.player && this.currentItem) {
+          // Implementation for quality change
+          this.showToast(`Qualidade alterada para ${quality}`, 'info');
+        }
+      }
+
+      saveSettings() {
+        const settings = {
+          theme: document.getElementById('themeSelector').value,
+          autoplay: document.getElementById('autoplay').checked,
+          showMetrics: document.getElementById('showMetrics').checked,
+          enableRetry: document.getElementById('enableRetry').checked,
+          connectionTimeout: parseInt(document.getElementById('connectionTimeout').value),
+          bufferSize: parseInt(document.getElementById('bufferSize').value),
+          maxRetries: parseInt(document.getElementById('maxRetries').value)
+        };
+
+        localStorage.setItem('iptvSettings', JSON.stringify(settings));
+        this.loadSettings();
+        this.showToast('Configurações salvas com sucesso!', 'success');
+      }
+
+      loadSettings() {
+        const settings = JSON.parse(localStorage.getItem('iptvSettings') || '{}');
+        
+        if (settings.theme) {
+          document.getElementById('themeSelector').value = settings.theme;
+          this.changeTheme(settings.theme);
+        }
+        
+        if (settings.autoplay !== undefined) {
+          document.getElementById('autoplay').checked = settings.autoplay;
+        }
+        
+        if (settings.showMetrics !== undefined) {
+          document.getElementById('showMetrics').checked = settings.showMetrics;
+          this.togglePerformanceMetrics(settings.showMetrics);
+        }
+        
+        if (settings.enableRetry !== undefined) {
+          document.getElementById('enableRetry').checked = settings.enableRetry;
+          this.enableRetry = settings.enableRetry;
+        }
+        
+        if (settings.connectionTimeout) {
+          document.getElementById('connectionTimeout').value = settings.connectionTimeout;
+          this.connectionTimeout = settings.connectionTimeout;
+        }
+        
+        if (settings.bufferSize) {
+          document.getElementById('bufferSize').value = settings.bufferSize;
+          this.bufferSize = settings.bufferSize;
+        }
+        
+        if (settings.maxRetries) {
+          document.getElementById('maxRetries').value = settings.maxRetries;
+          this.maxRetries = settings.maxRetries;
+        }
+      }
+
+      changeTheme(theme) {
+        document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+      }
+
+      clearCache() {
+        this.cache.clear();
+        localStorage.removeItem('iptvCache');
+        this.showToast('Cache limpo com sucesso!', 'success');
+      }
+
+      showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = `toast custom-toast show`;
+        toast.setAttribute('role', 'alert');
+        
+        const iconMap = {
+          success: 'check-circle',
+          error: 'exclamation-triangle',
+          warning: 'exclamation-circle',
+          info: 'info-circle'
+        };
+
+        toast.innerHTML = `
+          <div class="toast-header">
+            <i class="fas fa-${iconMap[type]} me-2"></i>
+            <strong class="me-auto">IPTV Player</strong>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+          </div>
+          <div class="toast-body">${message}</div>
+        `;
+
+        document.querySelector('.toast-container').appendChild(toast);
+
+        setTimeout(() => {
+          toast.remove();
+        }, 5000);
+      }
+
+      showError(message) {
+        this.showToast(message, 'error');
+      }
+
+      toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        } else {
+          document.exitFullscreen();
+        }
+      }
+
+      shareApp() {
+        const shareData = {
+          title: 'IPTV Player v8 Enhanced',
+          text: 'Player IPTV avançado com recursos melhorados',
+          url: window.location.href
+        };
+
+        if (navigator.share) {
+          navigator.share(shareData).catch(console.error);
+        } else {
+          navigator.clipboard.writeText(window.location.href).then(() => {
+            this.showToast('Link copiado para a área de transferência!', 'success');
+          }).catch(() => {
+            this.showError('Não foi possível copiar o link');
+          });
+        }
+      }
+
+      debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      loadConfig() {
+        return JSON.parse(localStorage.getItem('iptvConfig') || '{}');
+      }
+
+      // Placeholder methods for compatibility
+      showContentSection(section) {
+        console.log('Showing section:', section);
+      }
+
+      displayChannels(channels) {
+        console.log('Displaying channels:', channels);
+      }
+
+      loadMovies() {
+        console.log('Loading movies...');
+      }
+
+      loadSeries() {
+        console.log('Loading series...');
+      }
+
+      loadRadios() {
+        console.log('Loading radios...');
+      }
+
+      playContent(item) {
+        this.currentItem = item;
+        console.log('Playing:', item);
+      }
+
+      clearSearchResults() {
+        console.log('Clearing search results');
+      }
+
+      handleError(title, error) {
+        console.error(title, error);
+        this.showError(`${title}: ${error.message}`);
+      }
+    }
+
+    // Performance Monitor Class
+    class PerformanceMonitor {
+      constructor() {
+        this.enabled = false;
+        this.startTime = 0;
+        this.loadTime = 0;
+        this.isBuffering = false;
+        this.bufferingEvents = [];
+        this.frameCount = 0;
+        this.lastFrameTime = 0;
+        this.fps = 0;
+      }
+
+      startSession() {
+        this.startTime = performance.now();
+        this.frameCount = 0;
+        this.lastFrameTime = performance.now();
+      }
+
+      recordLoadTime() {
+        this.loadTime = performance.now() - this.startTime;
+      }
+
+      recordBuffering(isBuffering) {
+        this.isBuffering = isBuffering;
+        this.bufferingEvents.push({
+          time: performance.now(),
+          buffering: isBuffering
+        });
+      }
+
+      updateMetrics() {
+        if (!this.enabled) return;
+
+        // Update FPS
+        this.frameCount++;
+        const now = performance.now();
+        if (now - this.lastFrameTime >= 1000) {
+          this.fps = Math.round(this.frameCount * 1000 / (now - this.lastFrameTime));
+          this.frameCount = 0;
+          this.lastFrameTime = now;
+        }
+      }
+
+      getLatency() {
+        return Math.round(this.loadTime);
+      }
+
+      getBufferHealth() {
+        const totalTime = performance.now() - this.startTime;
+        const bufferingTime = this.bufferingEvents.reduce((total, event, index) => {
+          if (event.buffering && index < this.bufferingEvents.length - 1) {
+            const nextEvent = this.bufferingEvents[index + 1];
+            return total + (nextEvent.time - event.time);
+          }
+          return total;
+        }, 0);
+
+        return Math.round(((totalTime - bufferingTime) / totalTime) * 100);
+      }
+
+      getFPS() {
+        return this.fps;
+      }
+    }
+
+    // Connection Manager Class
+    class ConnectionManager {
+      constructor() {
+        this.requestCache = new Map();
+        this.rateLimiter = new Map();
+      }
+
+      async initialize() {
+        // Setup connection management
+        console.log('Connection manager initialized');
+      }
+
+      async fetchWithRetry(url, options = {}, maxRetries = 3) {
+        for (let attempt = 1; attempt <= maxRetries; attempt++) {
+          try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+            const response = await fetch(url, {
+              ...options,
+              signal: controller.signal
+            });
+
+            clearTimeout(timeoutId);
+
+            if (!response.ok) {
+              throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            return data;
+          } catch (error) {
+            console.error(`Attempt ${attempt} failed:`, error);
+            
+            if (attempt === maxRetries) {
+              throw error;
+            }
+            
+            await this.delay(1000 * attempt);
+          }
+        }
+      }
+
+      delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+    }
+
+    // Initialize app
+    let iptvApp;
+    document.addEventListener('DOMContentLoaded', () => {
+      iptvApp = new EnhancedIPTVApp();
+    });
+  </script>
+</body>
+</html>
