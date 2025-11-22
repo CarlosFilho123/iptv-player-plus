@@ -94,7 +94,7 @@
       height: 100%;
       overflow-x: hidden;
     }
-
+    
     /* Header Styles - SEMPRE NO TOPO EM PAISAGEM */
     .header {
       background: var(--primary-gradient);
@@ -134,7 +134,7 @@
       transform: scale(1.1);
       color: white;
     }
-
+    
     /* Video Player Styles */
     .video-container {
       position: relative;
@@ -150,7 +150,7 @@
       width: 100%;
       height: 100%;
     }
-
+    
     /* Logo inside player */
     .player-logo {
       position: absolute;
@@ -163,7 +163,7 @@
       transition: all 0.3s ease;
       pointer-events: none;
     }
-
+    
     /* NOVA ANIMAÇÃO DA LOGO */
     .player-logo.animate-center {
       bottom: 50% !important;
@@ -173,7 +173,7 @@
       z-index: 200;
       transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-
+    
     .player-logo.animate-to-position {
       bottom: 60px !important;
       left: 15px !important;
@@ -182,7 +182,7 @@
       z-index: 100;
       transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-
+    
     .player-logo:hover {
       opacity: 1;
     }
@@ -250,7 +250,7 @@
     .radio-visual-display.active {
       display: block;
     }
-
+    
     /* Background desfocado */
     .radio-background {
       position: absolute;
@@ -266,18 +266,18 @@
       opacity: 0.4;
       z-index: 6;
     }
-
+    
     /* Overlay escuro para melhor contraste */
     .radio-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: 100%; 
       background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
       z-index: 7;
     }
-
+    
     /* Conteúdo principal da rádio */
     .radio-main-content {
       position: absolute;
@@ -290,7 +290,7 @@
       width: 90%;
       max-width: 400px;
     }
-
+    
     /* Imagem da rádio com foco */
     .radio-main-image {
       width: clamp(50px, 5vw, 200px);
@@ -303,16 +303,16 @@
       border: 3px solid rgba(255,255,255,0.2);
       animation: radioGlow 3s ease-in-out infinite alternate;
     }
-
+    
     @keyframes radioGlow {
-      0% {
+      0% { 
         box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 0 rgba(var(--primary-color), 0.0);
       }
-      100% {
+      100% { 
         box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(var(--primary-color), 0.3);
       }
     }
-
+    
     /* Informações da rádio */
     .radio-main-info h3 {
       font-size: clamp(1.2rem, 4vw, 2rem);
@@ -321,14 +321,14 @@
       text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
       line-height: 1.2;
     }
-
+    
     .radio-main-info p {
       font-size: clamp(0.9rem, 3vw, 1.1rem);
       margin: 0 0 1rem 0;
       opacity: 0.9;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
     }
-
+    
     /* Indicador de reprodução */
     .radio-playing-indicator {
       display: inline-flex;
@@ -344,17 +344,17 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-
+    
     .radio-playing-indicator i {
       animation: pulse 2s infinite;
       color: var(--primary-color);
     }
-
+    
     /* Metadata da música */
     .radio-metadata-info {
       margin-top: 0.75rem;
     }
-
+    
     .now-playing-title {
       display: inline-flex;
       align-items: center;
@@ -369,24 +369,24 @@
       max-width: 100%;
       overflow: hidden;
     }
-
+    
     .now-playing-title i {
       color: var(--primary-color);
       animation: rotate 3s linear infinite;
     }
-
+    
     .now-playing-title span {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 300px;
     }
-
+    
     @keyframes rotate {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-
+    
     .video-placeholder {
       position: absolute;
       top: 0;
@@ -405,7 +405,7 @@
       margin-bottom: 1rem;
       opacity: 0.7;
     }
-
+    
     /* Custom Controls */
     .custom-controls {
       position: absolute;
@@ -435,7 +435,7 @@
       opacity: 0.5;
       cursor: not-allowed;
     }
-
+    
     /* GUIAS DE NAVEGAÇÃO PRINCIPAIS */
     .main-nav {
       background-color: var(--bg-secondary);
@@ -473,7 +473,7 @@
       background: rgba(220, 20, 60, 0.1);
       border-bottom: 3px solid var(--primary-color);
     }
-
+    
     /* ESTILOS DA BARRA DE GUIAS*/
     .tab-bar {
       background-color: var(--bg-tertiary);
@@ -512,7 +512,7 @@
       color: var(--primary-color);
       background: rgba(220, 20, 60, 0.1);
     }
-
+    
     .content-list {
       background-color: var(--bg-tertiary);
       max-height: 60vh;
@@ -530,7 +530,7 @@
       background: #555;
       border-radius: 3px;
     }
-
+    
     .content-item {
       display: flex;
       align-items: center;
@@ -548,7 +548,7 @@
       background: linear-gradient(90deg, rgba(220, 20, 60, 0.2), transparent);
       border-left: 4px solid var(--primary-color);
     }
-
+    
     .content-avatar {
       width: clamp(40px, 8vw, 60px);
       height: clamp(40px, 8vw, 60px);
@@ -565,7 +565,7 @@
       background-size: cover;
       background-position: center;
     }
-
+    
     .content-info {
       flex: 1;
       min-width: 0;
@@ -583,7 +583,7 @@
       font-size: clamp(0.7rem, 2.5vw, 0.8rem);
       color: var(--text-secondary);
     }
-
+    
     .progress-indicator {
       background: #FFA500;
       color: white;
@@ -594,7 +594,7 @@
       margin-top: 0.25rem;
       display: inline-block;
     }
-
+    
     .playing-indicator {
       background: var(--primary-gradient);
       color: white;
@@ -610,7 +610,7 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.7; }
     }
-
+    
     .favorite-btn {
       background: none;
       border: none;
@@ -627,7 +627,7 @@
     .favorite-btn.active {
       color: var(--primary-color);
     }
-
+    
     .search-results {
       max-height: 400px;
       overflow-y: auto;
@@ -668,7 +668,7 @@
       font-size: 0.8rem;
       color: var(--text-secondary);
     }
-
+    
     .loading-spinner {
       display: inline-block;
       width: 20px;
@@ -681,7 +681,7 @@
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
-
+    
     .modal-content {
       background-color: var(--bg-tertiary);
       border: none;
@@ -708,7 +708,7 @@
     .form-control::placeholder {
       color: var(--text-secondary);
     }
-
+    
     .continue-modal {
       position: fixed;
       top: 0;
@@ -755,7 +755,7 @@
     .continue-btn:hover {
       transform: scale(1.05);
     }
-
+    
     .games-carousel {
       overflow: hidden;
       white-space: nowrap;
@@ -771,14 +771,31 @@
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
-
+    
     .content-section {
       display: none;
     }
     .content-section.active {
       display: block;
     }
-
+    
+    /* Layout padrão - seções abaixo da navegação */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    .video-section {
+      width: 100%;
+    }
+    
+    .content-section-landscape {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
     /* Favorites horizontal scroll styles */
     .favorites-horizontal-scroll {
       display: flex;
@@ -942,17 +959,17 @@
       align-items: center;
       justify-content: space-between;
     }
-
+    
     @media (max-width: 768px) {
       .favorite-card {
         flex: 0 0 280px;
       }
-
+      
       .favorites-horizontal-scroll {
         padding: 0.75rem;
       }
     }
-
+    
     .episode-list {
       display: none;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -963,7 +980,7 @@
       overflow-y: auto;
       position: relative;
     }
-
+    
     /* Fixed back button for episodes */
     .episode-back-button {
       position: sticky;
@@ -974,7 +991,7 @@
       border-bottom: 1px solid var(--bg-quaternary);
       margin: -1rem -1rem 1rem -1rem;
     }
-
+    
     .episode-card {
       background: var(--bg-quaternary);
       border-radius: 0.5rem;
@@ -1006,7 +1023,7 @@
       font-size: 0.8rem;
       color: var(--text-secondary);
     }
-
+    
     /* Episode Navigation Overlay */
     .episode-nav-overlay {
       position: fixed;
@@ -1075,7 +1092,7 @@
     .episode-nav-item.current {
       background: var(--primary-color);
     }
-
+    
     /* Error handling styles */
     .error-overlay {
       position: fixed;
@@ -1165,7 +1182,7 @@
     .theme-claro { color: #007bff; }
     .theme-azul { color: #007bff; }
     .theme-vermelho { color: #dc3545; }
-
+    
     /* Layout Paisagem - SUPER OTIMIZADO E HEADER SEMPRE NO TOPO */
     @media (orientation: landscape) and (min-width: 768px) {
       .app-container {
@@ -1174,7 +1191,7 @@
         height: 100vh;
         overflow: hidden;
       }
-
+      
       .header {
         position: sticky !important;
         top: 0 !important;
@@ -1182,13 +1199,13 @@
         order: -1 !important; /* Sempre primeiro elemento - no topo */
         flex-shrink: 0;
       }
-
+      
       .main-content {
         display: flex;
         flex: 1;
         overflow: hidden;
       }
-
+      
       .video-section {
         flex: 1.6;
         display: flex;
@@ -1196,7 +1213,7 @@
         min-width: 0;
         height: calc(100vh - 60px); /* Desconto altura do header */
       }
-
+      
       .content-section-landscape {
         flex: 0 0 420px;
         display: flex !important;
@@ -1206,45 +1223,45 @@
         height: calc(100vh - 60px);
         overflow: hidden;
       }
-
+      
       .video-container {
         padding-top: 0 !important;
         height: 100%;
         flex: 1;
         min-height: 0;
       }
-
+      
       .main-nav {
         order: 1;
         flex-shrink: 0;
         padding: 0.3rem 0;
         border-bottom: 1px solid var(--bg-quaternary);
       }
-
+      
       .main-nav .nav-link {
         padding: 0.4rem 0.8rem;
         font-size: 0.8rem;
         font-weight: 500;
       }
-
+      
       .tab-bar {
         order: 2;
         flex-shrink: 0;
         padding: 0.3rem 0;
         border-bottom: 1px solid var(--bg-quaternary);
       }
-
+      
       .tab-nav {
         padding: 0 0.6rem;
         gap: 0.4rem;
       }
-
+      
       .tab-btn {
         padding: 0.35rem 0.7rem;
         font-size: 0.72rem;
         font-weight: 500;
       }
-
+      
       .content-list {
         order: 3;
         max-height: none !important;
@@ -1252,70 +1269,70 @@
         overflow-y: auto;
         margin: 0;
       }
-
+      
       .games-carousel {
         display: none !important;
       }
-
+      
       .content-item {
         padding: 0.5rem 0.7rem;
       }
-
+      
       .content-avatar {
         width: 42px;
         height: 42px;
         margin-right: 0.7rem;
         font-size: 0.9rem;
       }
-
+      
       .content-name {
         font-size: 0.82rem;
         line-height: 1.3;
       }
-
+      
       .content-details {
         font-size: 0.72rem;
         line-height: 1.2;
       }
-
+      
       .playing-indicator {
         font-size: 0.65rem;
         padding: 0.2rem 0.5rem;
       }
-
+      
       .favorite-btn {
         font-size: 1rem;
         padding: 0.4rem;
       }
-
+      
       /* Player optimizations for landscape */
       .player-logo {
         width: 50px;
         bottom: 18px;
         left: 18px;
       }
-
+      
       .radio-info-overlay {
         top: 18px;
         left: 18px;
         max-width: 380px;
         padding: 14px 18px;
       }
-
+      
       .radio-logo-small {
         width: 48px;
         height: 48px;
       }
-
+      
       .radio-name {
         font-size: 1rem;
         line-height: 1.3;
       }
-
+      
       .radio-frequency {
         font-size: 0.82rem;
       }
-
+      
       /* Custom controls positioning */
       .custom-controls {
         bottom: 18px;
@@ -1323,22 +1340,22 @@
         right: 18px;
         gap: 10px;
       }
-
+      
       .control-btn {
         padding: 7px 12px;
         font-size: 0.75rem;
       }
-
+      
       /* Scroll optimization */
       .content-list::-webkit-scrollbar {
         width: 5px;
       }
-
+      
       .content-list::-webkit-scrollbar-thumb {
         background: #666;
         border-radius: 2px;
       }
-
+      
       /* Episode list in landscape */
       .episode-list {
         grid-template-columns: 1fr !important;
@@ -1348,36 +1365,36 @@
         flex: 1;
         order: 3;
       }
-
+      
       .episode-card {
         padding: 0.7rem;
       }
-
+      
       .episode-back-button {
         padding: 0.7rem;
         margin: -0.6rem -0.6rem 0.6rem -0.6rem;
       }
-
+      
       /* Hide content sections properly in landscape */
       .content-section {
         display: none !important;
       }
-
+      
       .content-section.active {
         display: flex !important;
         flex-direction: column;
         height: 100%;
       }
-
+      
       /* Search modal optimization */
       .search-results {
         max-height: 300px;
       }
-
+      
       .search-item {
         padding: 0.6rem;
       }
-
+      
       .search-item .item-icon {
         width: 36px;
         height: 36px;
@@ -1385,90 +1402,90 @@
         font-size: 0.8rem;
       }
     }
-
+    
     /* Demais media queries permanecem iguais... */
     @media (orientation: landscape) and (min-width: 1024px) {
       .content-section-landscape {
         flex: 0 0 480px;
       }
-
+      
       .content-item {
         padding: 0.65rem;
       }
-
+      
       .content-avatar {
         width: 48px;
         height: 48px;
         margin-right: 0.9rem;
         font-size: 1rem;
       }
-
+      
       .content-name {
         font-size: 0.9rem;
       }
-
+      
       .content-details {
         font-size: 0.78rem;
       }
-
+      
       .tab-btn {
         padding: 0.45rem 0.9rem;
         font-size: 0.78rem;
       }
-
+      
       .main-nav .nav-link {
         padding: 0.5rem 1rem;
         font-size: 0.85rem;
       }
-
+      
       .radio-info-overlay {
         max-width: 420px;
         padding: 16px 20px;
       }
-
+      
       .radio-logo-small {
         width: 52px;
         height: 52px;
       }
-
+      
       .radio-name {
         font-size: 1.05rem;
       }
-
+      
       .radio-frequency {
         font-size: 0.85rem;
       }
     }
-
+    
     @media (orientation: landscape) and (min-width: 1440px) {
       .content-section-landscape {
         flex: 0 0 520px;
       }
-
+      
       .header {
         padding: 0.8rem 1.2rem;
       }
-
+      
       .header h1 {
         font-size: 1.4rem;
       }
-
+      
       .header-btn {
         width: 40px;
         height: 40px;
         font-size: 1rem;
       }
-
+      
       .main-nav .nav-link {
         padding: 0.6rem 1.2rem;
         font-size: 0.9rem;
       }
-
+      
       .tab-btn {
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
       }
-
+      
       .content-item {
         padding: 0.8rem;
       }
@@ -1479,16 +1496,16 @@
         margin-right: 1rem;
         font-size: 1.1rem;
       }
-
+      
       .content-name {
         font-size: 0.95rem;
       }
-
+      
       .content-details {
         font-size: 0.8rem;
       }
     }
-
+    
     @media (max-width: 768px) {
       .header {
         padding: 0.5rem 0.75rem;
@@ -1598,50 +1615,50 @@
       .header {
         padding: 0.4rem 0.8rem;
       }
-
+      
       .header h1 {
         font-size: 1.1rem;
       }
-
+      
       .header-btn {
         width: 32px;
         height: 32px;
         font-size: 0.8rem;
       }
-
+      
       .main-nav {
         padding: 0.2rem 0;
       }
-
+      
       .main-nav .nav-link {
         padding: 0.3rem 0.6rem;
         font-size: 0.75rem;
       }
-
+      
       .tab-bar {
         padding: 0.2rem 0;
       }
-
+      
       .tab-btn {
         padding: 0.3rem 0.6rem;
         font-size: 0.7rem;
       }
-
+      
       .content-item {
         padding: 0.4rem 0.6rem;
       }
-
+      
       .content-avatar {
         width: 38px;
         height: 38px;
         margin-right: 0.6rem;
         font-size: 0.8rem;
       }
-
+      
       .content-name {
         font-size: 0.78rem;
       }
-
+      
       .content-details {
         font-size: 0.68rem;
       }
@@ -1717,7 +1734,7 @@
 
           <!-- Logo padrão dentro do player no canto inferior esquerdo -->
           <img src="https://i.ibb.co/wYHRkPj/Text-Toos-Apk.png" alt="Logo Player" class="player-logo" id="playerLogo">
-
+          
           <!-- Radio info overlay - MELHORADO COM LOGO -->
           <div class="radio-info-overlay" id="radioInfoOverlay">
             <img id="radioLogoSmall" src="" alt="Radio Logo" class="radio-logo-small">
@@ -1731,10 +1748,10 @@
           <div class="radio-visual-display" id="radioVisualDisplay">
             <!-- Background desfocado -->
             <div class="radio-background" id="radioBackground"></div>
-
+            
             <!-- Overlay escuro -->
             <div class="radio-overlay"></div>
-
+            
             <!-- Conteúdo principal -->
             <div class="radio-main-content">
               <img id="radioMainImage" src="" alt="Radio Logo" class="radio-main-image">
@@ -1754,7 +1771,7 @@
               </div>
             </div>
           </div>
-
+          
           <div class="video-placeholder" id="videoPlaceholder">
             <i class="fas fa-play-circle"></i>
             <h5>Selecione um conteúdo para assistir</h5>
@@ -1773,7 +1790,7 @@
             </button>
           </div>
         </div>
-
+        
         <!-- Main Navigation -->
         <div class="main-nav">
           <ul class="nav nav-tabs d-flex justify-content-center">
@@ -1816,7 +1833,7 @@
         </div>
 
         <!-- Content Sections -->
-
+        
         <!-- Channels Section -->
         <div id="channelsSection" class="content-section active">
           <div class="tab-bar">
@@ -2026,7 +2043,7 @@
       <button class="retry-btn" style="background: #6B7280;" id="closeErrorBtn">Fechar</button>
     </div>
   </div>
-
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
 
@@ -2184,10 +2201,10 @@
         this.retryDelay = 1000;
         this.favoritesBackend = new FavoritesBackend();
         this.favoritesList = new Map(); // Cache for favorites display
-
+        
         // NOVA PROPRIEDADE: Controle se está reproduzindo vídeo de rádio
         this.radioVideoMode = false;
-
+        
         this.config = {
           server: 'http://c.maintech.top',
           githubRawUrl: 'https://raw.githubusercontent.com/1IPTVPLAYERv/radios/refs/heads/main/radios.json ', // INSIRA AQUI A URL DO GITHUB RAW PARA CARREGAR RÁDIOS EXTRAS
@@ -2200,34 +2217,34 @@
 
       async initRadios() {
         // Rádios padrão
-        this.radios = [\
-\
+        this.radios = [
+                    
         ];
-
+        
         // NOVA FUNCIONALIDADE: Carregar rádios extras do GitHub RAW
         await this.loadRadiosFromGitHubRaw();
       }
-
+      
       // NOVA FUNÇÃO: Carregar rádios do GitHub RAW
       async loadRadiosFromGitHubRaw() {
         // URL DO GITHUB RAW - INSIRA SUA URL AQUI:
         const githubRawUrl = this.config.githubRawUrl || '';
-
+        
         if (!githubRawUrl) {
           console.log('URL do GitHub RAW não configurada');
           return;
         }
-
+        
         try {
           console.log('Carregando rádios extras do GitHub RAW:', githubRawUrl);
           const response = await fetch(githubRawUrl);
-
+          
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
-
+          
           const data = await response.text();
-
+          
           // Tentar fazer parsing do JSON
           let extraRadios;
           try {
@@ -2236,17 +2253,17 @@
             console.error('Erro ao fazer parse do JSON:', parseError);
             return;
           }
-
+          
           // Validar se é um array
           if (!Array.isArray(extraRadios)) {
             console.error('O arquivo RAW deve conter um array de rádios');
             return;
           }
-
+          
           // Adicionar as rádios extras às rádios existentes
           console.log(`Adicionando ${extraRadios.length} rádios extras`);
           this.radios = [...this.radios, ...extraRadios];
-
+          
         } catch (error) {
           console.error('Erro ao carregar rádios do GitHub RAW:', error);
         }
@@ -2259,13 +2276,13 @@
           this.loadWatchProgress();
           this.initPlayer();
           this.setupEventListeners();
-
-          await Promise.all([\
-            this.loadCategories(),\
-            this.loadMovieCategories(),\
-            this.loadSeriesCategories()\
+          
+          await Promise.all([
+            this.loadCategories(),
+            this.loadMovieCategories(),
+            this.loadSeriesCategories()
           ]);
-
+          
           this.renderRadios();
           this.loadGames();
         } catch (error) {
@@ -2317,7 +2334,7 @@
 
       setupAdvancedPlayer(url, type) {
         const video = this.player.el().querySelector('video');
-
+        
         // Cleanup previous HLS instance
         if (this.hls) {
           this.hls.destroy();
@@ -2331,7 +2348,7 @@
         // Detect content type
         const extension = url.split('.').pop().toLowerCase().split('?')[0];
         const isHLS = extension === 'm3u8' || extension === 'm3u' || extension === 'ts' || url.includes('m3u8');
-
+        
         if (isHLS && Hls.isSupported()) {
           // Use HLS.js for HLS streams
           this.hls = new Hls({
@@ -2349,14 +2366,14 @@
             manifestLoadingTimeOut: 10000,
             fragLoadingTimeOut: 20000
           });
-
+          
           this.hls.loadSource(url);
           this.hls.attachMedia(video);
-
+          
           this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
             console.log('HLS manifest loaded');
           });
-
+          
           this.hls.on(Hls.Events.ERROR, (event, data) => {
             console.error('HLS Error:', data);
             if (data.fatal) {
@@ -2379,7 +2396,7 @@
         } else {
           // Use native video player for other formats
           let mimeType = 'video/mp4';
-
+          
           // MODIFICAÇÃO: Determinar MIME type baseado no tipo e extensão
           if (type === 'radio' && (extension === 'mp3' || extension === 'aac' || extension === 'ogg')) {
             mimeType = 'audio/mpeg';
@@ -2407,12 +2424,12 @@
           } else if (extension === 'ogv') {
             mimeType = 'video/ogg';
           }
-
+          
           this.player.src({
             type: mimeType,
             src: url
           });
-
+          
           // Adicionar evento de sucesso no carregamento
           this.player.el().querySelector('video').addEventListener('loadeddata', () => {
             console.log('Mídia carregada com sucesso:', url);
@@ -2423,7 +2440,7 @@
       setupEventListeners() {
         // Theme button
         document.getElementById('themeBtn').addEventListener('click', openThemeModal);
-
+        
         // Theme options
         document.querySelectorAll('.theme-option').forEach(option => {
           option.addEventListener('click', () => {
@@ -2459,7 +2476,7 @@
           link.addEventListener('click', () => {
             document.querySelectorAll('.main-nav .nav-link').forEach(l => l.classList.remove('active'));
             link.classList.add('active');
-
+            
             const content = link.dataset.content;
             this.activeContent = content;
             this.showContentSection(content);
@@ -2471,7 +2488,7 @@
           btn.addEventListener('click', () => {
             document.querySelectorAll('#radioTabNav .tab-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
+            
             this.activeRadioCategory = btn.dataset.category;
             this.renderRadios();
           });
@@ -2517,7 +2534,7 @@
         document.querySelectorAll('.content-section').forEach(section => {
           section.classList.remove('active');
         });
-
+        
         if (contentType === 'favorites') {
           document.getElementById('favoritesSection').classList.add('active');
           this.activeContent = 'favorites';
@@ -2565,11 +2582,11 @@
       // Gera URLs alternativas para evitar problemas de acesso simultâneo
       generateFallbackUrls(originalUrl) {
         const urls = [originalUrl];
-
+        
         // Adiciona variações com parâmetros para evitar cache e conflitos
         const timestamp = Date.now();
         const randomId = Math.random().toString(36).substr(2, 9);
-
+        
         // Variação 1: Adiciona timestamp
         if (originalUrl.includes('?')) {
           urls.push(`${originalUrl}&_t=${timestamp}`);
@@ -2580,21 +2597,21 @@
           urls.push(`${originalUrl}?_r=${randomId}`);
           urls.push(`${originalUrl}?_t=${timestamp}&_r=${randomId}`);
         }
-
+        
         // Se a URL contém parâmetros de autenticação, tenta diferentes combinações
         if (originalUrl.includes('username') && originalUrl.includes('password')) {
           const baseUrl = originalUrl.split('?')[0];
           const params = new URLSearchParams(originalUrl.split('?')[1]);
-
+          
           // Variação com delay aleatório
           params.set('_delay', Math.floor(Math.random() * 5000));
           urls.push(`${baseUrl}?${params.toString()}`);
-
+          
           // Variação com session diferente
           params.set('_session', randomId);
           urls.push(`${baseUrl}?${params.toString()}`);
         }
-
+        
         return urls;
       }
 
@@ -2612,7 +2629,7 @@
       async loadCategories() {
         const cacheKey = 'categories';
         let categories = this.getCachedData(cacheKey);
-
+        
         if (!categories) {
           try {
             categories = await this.retryRequest(async () => {
@@ -2628,7 +2645,7 @@
             categories = [];
           }
         }
-
+        
         this.categories = categories;
         this.renderCategories();
       }
@@ -2636,7 +2653,7 @@
       async loadMovieCategories() {
         const cacheKey = 'movie-categories';
         let categories = this.getCachedData(cacheKey);
-
+        
         if (!categories) {
           try {
             categories = await this.retryRequest(async () => {
@@ -2652,7 +2669,7 @@
             categories = [];
           }
         }
-
+        
         this.movieCategories = categories;
         this.renderMovieCategories();
       }
@@ -2660,7 +2677,7 @@
       async loadSeriesCategories() {
         const cacheKey = 'series-categories';
         let categories = this.getCachedData(cacheKey);
-
+        
         if (!categories) {
           try {
             categories = await this.retryRequest(async () => {
@@ -2676,7 +2693,7 @@
             categories = [];
           }
         }
-
+        
         this.seriesCategories = categories;
         this.renderSeriesCategories();
       }
@@ -2684,7 +2701,7 @@
       renderCategories() {
         const tabNav = document.getElementById('channelTabNav');
         tabNav.innerHTML = '';
-
+        
         this.categories.forEach((category, index) => {
           const button = document.createElement('button');
           button.className = 'tab-btn';
@@ -2706,7 +2723,7 @@
       renderMovieCategories() {
         const tabNav = document.getElementById('movieTabNav');
         tabNav.innerHTML = '';
-
+        
         this.movieCategories.forEach((category, index) => {
           const button = document.createElement('button');
           button.className = 'tab-btn';
@@ -2728,7 +2745,7 @@
       renderSeriesCategories() {
         const tabNav = document.getElementById('seriesTabNav');
         tabNav.innerHTML = '';
-
+        
         this.seriesCategories.forEach((category, index) => {
           const button = document.createElement('button');
           button.className = 'tab-btn';
@@ -2805,13 +2822,13 @@
           });
 
           this.activeSeriesCategory = categoryId;
-
+          
           // Garantir que a lista de séries está visível
           const seriesList = document.getElementById('seriesList');
           const episodeList = document.getElementById('episodeList');
           seriesList.style.display = 'block';
           episodeList.style.display = 'none';
-
+          
           seriesList.innerHTML = `
             <div class="text-center p-4">
               <div class="loading-spinner"></div>
@@ -2829,7 +2846,7 @@
       async loadChannels(categoryId) {
         const cacheKey = `channels-${categoryId}`;
         let channels = this.getCachedData(cacheKey);
-
+        
         if (!channels) {
           try {
             channels = await this.retryRequest(async () => {
@@ -2853,7 +2870,7 @@
             return;
           }
         }
-
+        
         this.channels = channels;
         // Add to global search content
         this.allContent = this.allContent.filter(item => item.type !== 'channel');
@@ -2864,7 +2881,7 @@
       async loadMovies(categoryId) {
         const cacheKey = `movies-${categoryId}`;
         let movies = this.getCachedData(cacheKey);
-
+        
         if (!movies) {
           try {
             movies = await this.retryRequest(async () => {
@@ -2892,7 +2909,7 @@
             return;
           }
         }
-
+        
         this.movies = movies;
         // Add to global search content
         this.allContent = this.allContent.filter(item => item.type !== 'movie');
@@ -2903,7 +2920,7 @@
       async loadSeries(categoryId) {
         const cacheKey = `series-${categoryId}`;
         let series = this.getCachedData(cacheKey);
-
+        
         if (!series) {
           try {
             series = await this.retryRequest(async () => {
@@ -2931,7 +2948,7 @@
             return;
           }
         }
-
+        
         this.series = series;
         // Add to global search content
         this.allContent = this.allContent.filter(item => item.type !== 'series');
@@ -2941,7 +2958,7 @@
 
       renderChannels() {
         const channelList = document.getElementById('channelList');
-
+        
         if (this.channels.length === 0) {
           channelList.innerHTML = `
             <div class="text-center p-4">
@@ -2961,7 +2978,7 @@
 
       renderMovies() {
         const movieList = document.getElementById('movieList');
-
+        
         if (this.movies.length === 0) {
           movieList.innerHTML = `
             <div class="text-center p-4">
@@ -2981,7 +2998,7 @@
 
       renderSeries() {
         const seriesList = document.getElementById('seriesList');
-
+        
         if (this.series.length === 0) {
           seriesList.innerHTML = `
             <div class="text-center p-4">
@@ -3002,7 +3019,7 @@
       renderRadios() {
         const radioList = document.getElementById('radioList');
         let filteredRadios = this.radios;
-
+        
         if (this.activeRadioCategory !== 'all') {
           filteredRadios = this.radios.filter(radio => radio.category === this.activeRadioCategory);
         }
@@ -3027,7 +3044,7 @@
       createContentItem(content, type) {
         const item = document.createElement('div');
         item.className = 'content-item';
-
+        
         const isPlaying = (type === 'channel' && this.currentChannel === content.id) ||
                          (type === 'movie' && this.currentMovie?.id === content.id) ||
                          (type === 'series' && this.currentSeries?.id === content.id) ||
@@ -3040,8 +3057,8 @@
         const avatarStyle = content.icon ? `background-image: url('${content.icon}'); background-size: cover; background-position: center;` : '';
 
         // Check for watch progress
-        const progressKey = type === 'channel' ? `channel_${content.id}` :
-                           type === 'movie' ? `movie_${content.id}` :
+        const progressKey = type === 'channel' ? `channel_${content.id}` : 
+                           type === 'movie' ? `movie_${content.id}` : 
                            type === 'series' ? `series_${content.id}` :
                            `radio_${content.id}`;
         const progress = this.watchProgress.get(progressKey);
@@ -3060,13 +3077,13 @@
         } else if (type === 'radio') {
           details = content.frequency || 'Rádio';
           if (content.city) details += ` • ${content.city}`;
-
+          
           // NOVA FUNCIONALIDADE: Indicar se tem vídeo
           const hasVideo = content.video && content.video.trim() !== '' && content.video !== 'url_vídeo';
           if (hasVideo) {
             details += ' • 📺';
           }
-
+          
           if (isPlaying) details = 'Tocando agora';
         }
 
@@ -3083,7 +3100,7 @@
             </div>
           </div>
           ${isPlaying ? '<div class="playing-indicator">Tocando</div>' : ''}
-          <button class="favorite-btn ${this.favorites.has(content.id) ? 'active' : ''}"
+          <button class="favorite-btn ${this.favorites.has(content.id) ? 'active' : ''}" 
                   data-content-id="${content.id}">
             <i class="fas fa-heart"></i>
           </button>
@@ -3117,21 +3134,21 @@
       // NOVA FUNÇÃO PARA ANIMAR A LOGO
       animateLogo() {
         const logo = document.getElementById('playerLogo');
-
+        
         // Reset any existing classes
         logo.classList.remove('animate-center', 'animate-to-position');
-
+        
         // Force reflow
         logo.offsetHeight;
-
+        
         // Animate to center
         logo.classList.add('animate-center');
-
+        
         // After 1.5 seconds, animate to final position
         setTimeout(() => {
           logo.classList.remove('animate-center');
           logo.classList.add('animate-to-position');
-
+          
           // Remove the class after animation completes
           setTimeout(() => {
             logo.classList.remove('animate-to-position');
@@ -3230,30 +3247,30 @@
 
           // NOVA FUNCIONALIDADE: Verificar se tem URL de vídeo
           const hasVideoStream = radio.video && radio.video.trim() !== '' && radio.video !== 'url_vídeo';
-
+          
           if (hasVideoStream) {
             console.log('Reproduzindo rádio com stream de vídeo:', radio.video);
             this.radioVideoMode = true;
-
+            
             // Use advanced player para stream de vídeo
             this.setupAdvancedPlayer(radio.video, 'radio-video');
-
+            
             this.player.ready(() => {
               this.player.play();
             });
 
             document.getElementById('videoPlaceholder').style.display = 'none';
-
+            
             // Para rádios com vídeo, não mostrar a tela de rádio visual
             this.hideRadioVisualDisplay();
-
+            
             // Mostrar apenas overlay de informação temporariamente
             this.showRadioInfo(radio);
-
+            
           } else {
             console.log('Reproduzindo rádio em modo áudio apenas:', radio.url);
             this.radioVideoMode = false;
-
+            
             // Use advanced player for radio (áudio apenas)
             this.setupAdvancedPlayer(radio.url, 'radio');
 
@@ -3262,14 +3279,14 @@
             });
 
             document.getElementById('videoPlaceholder').style.display = 'none';
-
+            
             // Show radio visual display para áudio apenas
             this.showRadioVisualDisplay(radio);
-
+            
             // Start metadata fetching if available
             this.startMetadataFetching(radio);
           }
-
+          
           this.renderRadios();
           this.hideCustomControls();
         } catch (error) {
@@ -3283,7 +3300,7 @@
         if (this.radioVideoMode) {
           return;
         }
-
+        
         const visualDisplay = document.getElementById('radioVisualDisplay');
         const background = document.getElementById('radioBackground');
         const mainImage = document.getElementById('radioMainImage');
@@ -3299,7 +3316,7 @@
           background.style.backgroundImage = `url(${radio.icon})`;
           mainImage.src = radio.icon;
           mainImage.alt = radio.name;
-
+          
           // Handle image loading
           mainImage.onerror = function() {
             // Fallback to gradient background
@@ -3325,10 +3342,10 @@
       hideRadioVisualDisplay() {
         const visualDisplay = document.getElementById('radioVisualDisplay');
         visualDisplay.classList.remove('active');
-
+        
         // Stop metadata fetching when hiding radio display
         this.stopMetadataFetching();
-
+        
         // Reset radio video mode
         this.radioVideoMode = false;
       }
@@ -3348,9 +3365,9 @@
         logoSmall.onload = function() {
           this.style.display = 'block';
         };
-
+        
         nameOverlay.textContent = radio.name;
-
+        
         // NOVA FUNCIONALIDADE: Mostrar se tem vídeo
         const hasVideo = radio.video && radio.video.trim() !== '' && radio.video !== 'url_vídeo';
         let frequencyText = `${radio.frequency}${radio.city ? ' • ' + radio.city : ''}`;
@@ -3378,4 +3395,1033 @@
         // Clear any existing metadata interval
         if (this.metadataInterval) {
           clearInterval(this.metadataInterval);
-          this.metadataInterv
+          this.metadataInterval = null;
+        }
+
+        // Hide metadata info initially
+        const metadataInfo = document.getElementById('radioMetadataInfo');
+        metadataInfo.style.display = 'none';
+
+        // Only start fetching if radio has metadata API configured
+        if (radio.metadata) {
+          console.log('Starting metadata fetching for radio:', radio.name);
+          
+          // Show metadata info
+          metadataInfo.style.display = 'block';
+          
+          // Fetch metadata immediately
+          this.fetchRadioMetadata(radio);
+          
+          // Set up interval to fetch metadata every 30 seconds
+          this.metadataInterval = setInterval(() => {
+            this.fetchRadioMetadata(radio);
+          }, 30000); // 30 seconds
+        }
+      }
+
+      async fetchRadioMetadata(radio) {
+        if (!radio.metadata || !radio.url) {
+          return;
+        }
+
+        try {
+          const metadataUrl = radio.metadata + encodeURIComponent(radio.url);
+          console.log('Fetching metadata from:', metadataUrl);
+          
+          const response = await fetch(metadataUrl, {
+            method: 'GET',
+            headers: {
+              'Accept': 'application/json',
+            },
+            timeout: 10000 // 10 seconds timeout
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          console.log('Metadata received:', data);
+
+          if (data && data.title) {
+            this.updateSongTitle(data.title);
+          }
+        } catch (error) {
+          console.error('Error fetching metadata:', error);
+          // Don't show error to user, just log it
+        }
+      }
+
+      updateSongTitle(title) {
+        const songTitleElement = document.getElementById('songTitle');
+        if (songTitleElement && title) {
+          songTitleElement.textContent = title;
+          console.log('Updated song title to:', title);
+        }
+      }
+
+      stopMetadataFetching() {
+        if (this.metadataInterval) {
+          clearInterval(this.metadataInterval);
+          this.metadataInterval = null;
+          console.log('Stopped metadata fetching');
+        }
+        
+        // Hide metadata info
+        const metadataInfo = document.getElementById('radioMetadataInfo');
+        metadataInfo.style.display = 'none';
+      }
+
+      async showSeriesEpisodes(series) {
+        try {
+          this.currentSeries = series;
+          
+          // Hide series list and show episode list
+          document.getElementById('seriesList').style.display = 'none';
+          const episodeList = document.getElementById('episodeList');
+          episodeList.style.display = 'grid';
+
+          episodeList.innerHTML = `
+            <div class="episode-back-button">
+              <button class="btn btn-secondary" onclick="iptvApp.backToSeries()">
+                <i class="fas fa-arrow-left me-2"></i>Voltar às séries
+              </button>
+              <h5 class="mt-2 mb-0">${series.name}</h5>
+            </div>
+            <div class="text-center p-4" style="grid-column: 1 / -1;">
+              <div class="loading-spinner"></div>
+              <p class="mt-2 mb-0">Carregando episódios...</p>
+            </div>
+          `;
+
+          // Load episodes with cache
+          const cacheKey = `episodes-${series.id}`;
+          let episodesData = this.getCachedData(cacheKey);
+          
+          if (!episodesData) {
+            episodesData = await this.retryRequest(async () => {
+              const response = await fetch(`${this.config.server}/player_api.php?username=${this.config.username}&password=${this.config.password}&action=get_series_info&series_id=${series.id}`);
+              if (!response.ok) {
+                throw new Error('Erro na requisição');
+              }
+              return await response.json();
+            });
+            this.setCachedData(cacheKey, episodesData);
+          }
+
+          this.episodes = [];
+          
+          // Parse episodes from all seasons - CORRIGIDO
+          if (episodesData.episodes) {
+            Object.keys(episodesData.episodes).forEach(seasonNum => {
+              const seasonEpisodes = episodesData.episodes[seasonNum];
+              if (Array.isArray(seasonEpisodes)) {
+                seasonEpisodes.forEach(episode => {
+                  this.episodes.push({
+                    id: episode.id,
+                    title: episode.title,
+                    episode_num: episode.episode_num,
+                    season: episode.season || seasonNum,
+                    url: `${this.config.server}/series/${this.config.username}/${this.config.password}/${episode.id}.${episode.container_extension || 'mp4'}`,
+                    info: episode.info || {}
+                  });
+                });
+              }
+            });
+          }
+
+          // Sort episodes
+          this.episodes.sort((a, b) => {
+            if (a.season !== b.season) {
+              return a.season - b.season;
+            }
+            return a.episode_num - b.episode_num;
+          });
+
+          this.renderEpisodes();
+        } catch (error) {
+          console.error('Erro ao carregar episódios:', error);
+          this.showErrorOverlay('Erro ao carregar episódios', () => this.showSeriesEpisodes(series));
+        }
+      }
+
+      renderEpisodes() {
+        const episodeList = document.getElementById('episodeList');
+        
+        if (this.episodes.length === 0) {
+          episodeList.innerHTML = `
+            <div class="episode-back-button">
+              <button class="btn btn-secondary" onclick="iptvApp.backToSeries()">
+                <i class="fas fa-arrow-left me-2"></i>Voltar às séries
+              </button>
+              <h5 class="mt-2 mb-0">${this.currentSeries.name}</h5>
+            </div>
+            <div class="text-center p-4" style="grid-column: 1 / -1;">
+              <i class="fas fa-play fa-3x text-muted mb-3"></i>
+              <p class="text-muted">Nenhum episódio encontrado</p>
+            </div>
+          `;
+          return;
+        }
+
+        episodeList.innerHTML = `
+          <div class="episode-back-button">
+            <button class="btn btn-secondary" onclick="iptvApp.backToSeries()">
+              <i class="fas fa-arrow-left me-2"></i>Voltar às séries
+            </button>
+            <h5 class="mt-2 mb-0">${this.currentSeries.name}</h5>
+          </div>
+        `;
+
+        this.episodes.forEach((episode, index) => {
+          const episodeCard = document.createElement('div');
+          episodeCard.className = 'episode-card';
+          
+          if (this.currentEpisode && this.currentEpisode.id === episode.id) {
+            episodeCard.classList.add('current');
+          }
+
+          // Check for progress
+          const progress = this.checkContinueWatching(episode, 'episode');
+          let progressText = '';
+          if (progress) {
+            progressText = `<div class="progress-indicator mt-2">${Math.round(progress.percentage)}% assistido</div>`;
+          }
+
+          episodeCard.innerHTML = `
+            <div class="episode-number">T${episode.season}E${episode.episode_num}</div>
+            <div class="episode-title">${episode.title}</div>
+            <div class="episode-info">
+              ${episode.info.duration || ''}
+              ${progressText}
+            </div>
+          `;
+
+          episodeCard.addEventListener('click', () => {
+            this.playEpisode(episode, index);
+          });
+
+          episodeList.appendChild(episodeCard);
+        });
+      }
+
+      playEpisode(episode, index) {
+        const progress = this.checkContinueWatching(episode, 'episode');
+
+        const doPlay = (startTime = 0) => {
+          try {
+            this.animateLogo(); // NOVA LINHA - Anima a logo
+            this.currentEpisode = episode;
+            this.currentEpisodeIndex = index;
+            this.currentChannel = null;
+            this.currentMovie = null;
+            this.currentRadio = null;
+
+            // Use advanced player
+            this.setupAdvancedPlayer(episode.url, 'episode');
+
+            this.player.ready(() => {
+              if (startTime > 0) {
+                this.player.currentTime(startTime);
+              }
+              this.player.play();
+            });
+
+            document.getElementById('videoPlaceholder').style.display = 'none';
+            this.renderEpisodes();
+            this.showCustomControls();
+            this.updateEpisodeNavigation();
+            this.hideRadioInfo();
+            this.hideRadioVisualDisplay();
+          } catch (error) {
+            console.error('Erro ao reproduzir episódio:', error);
+            this.showErrorOverlay('Erro ao reproduzir episódio', () => this.playEpisode(episode, index));
+          }
+        };
+
+        if (progress) {
+          this.showContinueModal(progress, doPlay, () => doPlay(0));
+        } else {
+          doPlay();
+        }
+      }
+
+      backToSeries() {
+        const episodeList = document.getElementById('episodeList');
+        const seriesList = document.getElementById('seriesList');
+        
+        episodeList.style.display = 'none';
+        seriesList.style.display = 'block';
+        
+        this.hideCustomControls();
+        this.currentSeries = null;
+        this.currentEpisode = null;
+        this.episodes = [];
+        
+        // Force re-render series list to ensure it's visible
+        this.renderSeries();
+        
+        console.log('Voltou para lista de séries');
+      }
+
+      showCustomControls() {
+        document.getElementById('customControls').style.display = 'flex';
+        this.updateNavigationButtons();
+      }
+
+      hideCustomControls() {
+        document.getElementById('customControls').style.display = 'none';
+        this.hideEpisodeNavigation();
+      }
+
+      updateNavigationButtons() {
+        const prevBtn = document.getElementById('prevEpisodeBtn');
+        const nextBtn = document.getElementById('nextEpisodeBtn');
+        
+        prevBtn.disabled = this.currentEpisodeIndex <= 0;
+        nextBtn.disabled = this.currentEpisodeIndex >= this.episodes.length - 1;
+      }
+
+      playPreviousEpisode() {
+        if (this.currentEpisodeIndex > 0) {
+          const prevIndex = this.currentEpisodeIndex - 1;
+          this.playEpisode(this.episodes[prevIndex], prevIndex);
+        }
+      }
+
+      playNextEpisode() {
+        if (this.currentEpisodeIndex < this.episodes.length - 1) {
+          const nextIndex = this.currentEpisodeIndex + 1;
+          this.playEpisode(this.episodes[nextIndex], nextIndex);
+        }
+      }
+
+      toggleEpisodeNavigation() {
+        const overlay = document.getElementById('episodeNavOverlay');
+        if (overlay.classList.contains('visible')) {
+          this.hideEpisodeNavigation();
+        } else {
+          this.showEpisodeNavigation();
+        }
+      }
+
+      showEpisodeNavigation() {
+        if (!this.currentSeries || this.episodes.length === 0) return;
+
+        const overlay = document.getElementById('episodeNavOverlay');
+        const title = document.getElementById('episodeNavTitle');
+        const list = document.getElementById('episodeNavList');
+
+        title.textContent = this.currentSeries.name;
+        list.innerHTML = '';
+
+        this.episodes.forEach((episode, index) => {
+          const item = document.createElement('button');
+          item.className = 'episode-nav-item';
+          
+          if (this.currentEpisode && this.currentEpisode.id === episode.id) {
+            item.classList.add('current');
+          }
+
+          item.textContent = `T${episode.season}E${episode.episode_num} - ${episode.title}`;
+          item.addEventListener('click', () => {
+            this.playEpisode(episode, index);
+            this.hideEpisodeNavigation();
+          });
+
+          list.appendChild(item);
+        });
+
+        overlay.classList.add('visible');
+      }
+
+      hideEpisodeNavigation() {
+        document.getElementById('episodeNavOverlay').classList.remove('visible');
+      }
+
+      updateEpisodeNavigation() {
+        if (document.getElementById('episodeNavOverlay').classList.contains('visible')) {
+          this.showEpisodeNavigation();
+        }
+      }
+
+      checkContinueWatching(content, type) {
+        const progressKey = type === 'channel' ? `channel_${content.id || content}` : 
+                           type === 'movie' ? `movie_${content.id}` : 
+                           type === 'series' ? `series_${content.id}` :
+                           type === 'episode' ? `episode_${content.id}` :
+                           `radio_${content.id}`;
+                           
+        const progress = this.watchProgress.get(progressKey);
+        
+        if (progress && progress.percentage > 5 && progress.percentage < 90) {
+          return {
+            time: progress.currentTime,
+            percentage: progress.percentage,
+            duration: progress.duration
+          };
+        }
+        
+        return null;
+      }
+
+      showContinueModal(progress, continueCallback, restartCallback) {
+        const modal = document.getElementById('continueModal');
+        const message = document.getElementById('continueMessage');
+        
+        message.textContent = `Você parou em ${Math.round(progress.percentage)}% do conteúdo`;
+        
+        this.pendingContinueAction = {
+          continue: () => continueCallback(progress.time),
+          restart: () => restartCallback()
+        };
+        
+        modal.style.display = 'flex';
+      }
+
+      saveWatchProgress() {
+        if (!this.player || this.player.paused()) return;
+        
+        const currentTime = this.player.currentTime();
+        const duration = this.player.duration();
+        
+        if (!currentTime || !duration || currentTime < 30) return;
+        
+        const percentage = (currentTime / duration) * 100;
+        
+        let progressKey = '';
+        if (this.currentChannel) {
+          progressKey = `channel_${this.currentChannel}`;
+        } else if (this.currentMovie) {
+          progressKey = `movie_${this.currentMovie.id}`;
+        } else if (this.currentEpisode) {
+          progressKey = `episode_${this.currentEpisode.id}`;
+        } else if (this.currentRadio) {
+          progressKey = `radio_${this.currentRadio.id}`;
+        }
+        
+        if (progressKey) {
+          this.watchProgress.set(progressKey, {
+            currentTime,
+            duration,
+            percentage,
+            timestamp: Date.now()
+          });
+          
+          this.saveWatchProgressToStorage();
+        }
+      }
+
+      loadWatchProgress() {
+        try {
+          const saved = localStorage.getItem('iptv-watch-progress');
+          if (saved) {
+            const data = JSON.parse(saved);
+            this.watchProgress = new Map(data);
+          }
+        } catch (error) {
+          console.error('Erro ao carregar progresso:', error);
+        }
+      }
+
+      saveWatchProgressToStorage() {
+        try {
+          const data = Array.from(this.watchProgress.entries());
+          localStorage.setItem('iptv-watch-progress', JSON.stringify(data));
+        } catch (error) {
+          console.error('Erro ao salvar progresso:', error);
+        }
+      }
+
+      toggleFavorite(itemId) {
+        // Find the item in all content arrays
+        let item = null;
+        let itemType = null;
+        
+        // Search in channels
+        item = this.channels.find(c => c.id === itemId);
+        if (item) itemType = 'channel';
+        
+        // Search in movies if not found
+        if (!item) {
+          item = this.movies.find(m => m.id === itemId);
+          if (item) itemType = 'movie';
+        }
+        
+        // Search in series if not found
+        if (!item) {
+          item = this.series.find(s => s.id === itemId);
+          if (item) itemType = 'series';
+        }
+        
+        // Search in radios if not found
+        if (!item) {
+          item = this.radios.find(r => r.id === itemId);
+          if (item) itemType = 'radio';
+        }
+        
+        // Se não encontrou o item nas listas principais, busca nos favoritos salvos
+        if (!item) {
+          const favoriteItem = this.favoritesBackend.getFavorites().find(f => f.id === itemId);
+          if (favoriteItem) {
+            item = favoriteItem;
+            itemType = favoriteItem.type;
+          }
+        }
+        
+        if (!item) {
+          console.warn('Item não encontrado para toggle favorite:', itemId);
+          return;
+        }
+        
+        // Toggle favorite using backend
+        const wasFavorite = this.favoritesBackend.isFavorite(itemId);
+        
+        if (wasFavorite) {
+          console.log('Removendo favorito:', itemId);
+          this.favoritesBackend.removeFavorite(itemId);
+          this.favorites.delete(itemId);
+          
+          // Mostra feedback visual
+          this.showToast(`Removido dos favoritos: ${item.name}`, 'success');
+        } else {
+          console.log('Adicionando favorito:', itemId);
+          this.favoritesBackend.addFavorite(itemId, { ...item, type: itemType });
+          this.favorites.add(itemId);
+          
+          // Mostra feedback visual
+          this.showToast(`Adicionado aos favoritos: ${item.name}`, 'success');
+        }
+        
+        // Force update all content to refresh favorite buttons
+        this.updateAllFavoriteButtons();
+        
+        // Re-render current content
+        if (this.activeContent === 'channels') {
+          this.renderChannels();
+        } else if (this.activeContent === 'movies') {
+          this.renderMovies();
+        } else if (this.activeContent === 'series') {
+          this.renderSeries();
+        } else if (this.activeContent === 'radios') {
+          this.renderRadios();
+        } else if (this.activeContent === 'favorites') {
+          this.renderFavorites();
+        }
+      }
+
+      loadFavorites() {
+        try {
+          // Sync with backend
+          const backendFavorites = this.favoritesBackend.getFavorites();
+          this.favorites = new Set(backendFavorites.map(item => item.id));
+          
+          // Also load old format for migration
+          const saved = localStorage.getItem('iptv-favorites');
+          if (saved) {
+            const oldFavorites = JSON.parse(saved);
+            oldFavorites.forEach(id => {
+              if (!this.favorites.has(id)) {
+                // Migrate old favorites (we'll add them without full item data for now)
+                this.favorites.add(id);
+              }
+            });
+          }
+        } catch (error) {
+          console.error('Erro ao carregar favoritos:', error);
+        }
+      }
+
+      saveFavorites() {
+        // Backend handles saving automatically, but keep for compatibility
+        try {
+          localStorage.setItem('iptv-favorites', JSON.stringify([...this.favorites]));
+        } catch (error) {
+          console.error('Erro ao salvar favoritos:', error);
+        }
+      }
+
+      renderFavorites() {
+        const favoritesList = document.getElementById('favoritesList');
+        
+        // Force refresh from backend to get updated list
+        const favorites = this.favoritesBackend.getFavorites();
+        
+        console.log('Renderizando favoritos:', favorites.length);
+        
+        if (favorites.length === 0) {
+          favoritesList.innerHTML = `
+            <div class="favorites-empty">
+              <i class="fas fa-heart"></i>
+              <h5>Nenhum favorito ainda</h5>
+              <p>Toque no ❤️ nos seus conteúdos preferidos para vê-los aqui!</p>
+            </div>
+          `;
+          return;
+        }
+        
+        favoritesList.innerHTML = '';
+        
+        favorites.forEach(favorite => {
+          const card = document.createElement('div');
+          card.className = 'favorite-card';
+          
+          const avatarStyle = favorite.icon ? 
+            `background-image: url('${favorite.icon}'); background-size: cover; background-position: center;` : 
+            '';
+          
+          const typeLabels = {
+            'channel': '📺 Canal',
+            'movie': '🎬 Filme', 
+            'series': '📺 Série',
+            'radio': '📻 Rádio'
+          };
+          
+          const favoriteDate = new Date(favorite.favoriteDate).toLocaleDateString('pt-BR');
+          
+          card.innerHTML = `
+            <div class="favorite-header">
+              <div class="favorite-avatar" style="${avatarStyle}">
+                ${!favorite.icon ? favorite.letter || favorite.name.charAt(0).toUpperCase() : ''}
+              </div>
+              <div class="favorite-info">
+                <h6>${favorite.name}</h6>
+                <small>
+                  ${typeLabels[favorite.type] || favorite.type}
+                  ${favorite.year ? ` • ${favorite.year}` : ''}
+                  ${favorite.rating ? ` • ⭐ ${favorite.rating}` : ''}
+                </small>
+              </div>
+            </div>
+            
+            <div class="favorite-actions">
+              <button class="play-btn" data-favorite-id="${favorite.id}" data-favorite-type="${favorite.type}">
+                <i class="fas fa-play"></i>
+                Reproduzir
+              </button>
+              <button class="remove-favorite" data-favorite-id="${favorite.id}" title="Remover dos favoritos">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+            
+            <div class="favorite-meta">
+              Favoritado em ${favoriteDate}
+            </div>
+          `;
+          
+          // Play button event
+          const playBtn = card.querySelector('.play-btn');
+          playBtn.addEventListener('click', () => {
+            this.favoritesBackend.updateLastAccessed(favorite.id);
+            this.playFavoriteItem(favorite);
+          });
+          
+          // Remove button event
+          const removeBtn = card.querySelector('.remove-favorite');
+          removeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Confirmação antes de remover
+            if (confirm(`Tem certeza que deseja remover "${favorite.name}" dos favoritos?`)) {
+              console.log('Removendo favorito via botão remove:', favorite.id);
+              this.toggleFavorite(favorite.id);
+            }
+          });
+          
+          favoritesList.appendChild(card);
+        });
+      }
+
+      updateAllFavoriteButtons() {
+        // Atualiza todos os botões de favorito na interface
+        document.querySelectorAll('.favorite-btn').forEach(btn => {
+          const itemId = btn.dataset.id || btn.closest('.content-item').dataset.id;
+          if (itemId) {
+            const isFav = this.favoritesBackend.isFavorite(itemId);
+            btn.innerHTML = isFav ? '<i class="fas fa-heart"></i>' : '<i class="far fa-heart"></i>';
+            btn.classList.toggle('favorited', isFav);
+          }
+        });
+      }
+
+      showToast(message, type = 'info') {
+        // Cria um toast simples para feedback
+        const toast = document.createElement('div');
+        toast.className = `toast-notification toast-${type}`;
+        toast.textContent = message;
+        toast.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: ${type === 'success' ? '#28a745' : '#007bff'};
+          color: white;
+          padding: 12px 20px;
+          border-radius: 8px;
+          z-index: 10000;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+          transform: translateX(100%);
+          transition: transform 0.3s ease;
+        `;
+        
+        document.body.appendChild(toast);
+        
+        // Anima entrada
+        setTimeout(() => {
+          toast.style.transform = 'translateX(0)';
+        }, 100);
+        
+        // Remove após 3 segundos
+        setTimeout(() => {
+          toast.style.transform = 'translateX(100%)';
+          setTimeout(() => {
+            if (toast.parentNode) {
+              toast.parentNode.removeChild(toast);
+            }
+          }, 300);
+        }, 3000);
+      }
+      
+      playFavoriteItem(favorite) {
+        // Navigate to appropriate section and play
+        if (favorite.type === 'channel') {
+          this.showContentSection('channels');
+          this.playChannel(favorite);
+          document.querySelector('[data-content="channels"]').classList.add('active');
+          document.querySelectorAll('.main-nav .nav-link:not([data-content="channels"])').forEach(l => l.classList.remove('active'));
+        } else if (favorite.type === 'movie') {
+          this.showContentSection('movies');
+          this.playMovie(favorite);
+          document.querySelector('[data-content="movies"]').classList.add('active');
+          document.querySelectorAll('.main-nav .nav-link:not([data-content="movies"])').forEach(l => l.classList.remove('active'));
+        } else if (favorite.type === 'series') {
+          this.showContentSection('series');
+          this.showSeriesEpisodes(favorite);
+          document.querySelector('[data-content="series"]').classList.add('active');
+          document.querySelectorAll('.main-nav .nav-link:not([data-content="series"])').forEach(l => l.classList.remove('active'));
+        } else if (favorite.type === 'radio') {
+          this.showContentSection('radios');
+          this.playRadio(favorite);
+          document.querySelector('[data-content="radios"]').classList.add('active');
+          document.querySelectorAll('.main-nav .nav-link:not([data-content="radios"])').forEach(l => l.classList.remove('active'));
+        }
+      }
+
+      performSearch(query) {
+        const resultsContainer = document.getElementById('searchResults');
+        
+        if (!query || query.length < 2) {
+          resultsContainer.innerHTML = `
+            <div class="text-center">
+              <i class="fas fa-search fa-2x mb-2" style="color: #666;"></i>
+              <p>Digite pelo menos 2 caracteres para buscar</p>
+            </div>
+          `;
+          return;
+        }
+
+        const searchChannels = document.getElementById('searchChannels').checked;
+        const searchMovies = document.getElementById('searchMovies').checked;
+        const searchSeries = document.getElementById('searchSeries').checked;
+        const searchRadios = document.getElementById('searchRadios').checked;
+
+        let results = [];
+        
+        // Search channels
+        if (searchChannels) {
+          results.push(...this.channels.filter(item => 
+            item.name.toLowerCase().includes(query.toLowerCase())
+          ));
+        }
+        
+        // Search movies
+        if (searchMovies) {
+          results.push(...this.movies.filter(item => 
+            item.name.toLowerCase().includes(query.toLowerCase())
+          ));
+        }
+        
+        // Search series
+        if (searchSeries) {
+          results.push(...this.series.filter(item => 
+            item.name.toLowerCase().includes(query.toLowerCase())
+          ));
+        }
+        
+        // Search radios
+        if (searchRadios) {
+          results.push(...this.radios.filter(item => 
+            item.name.toLowerCase().includes(query.toLowerCase())
+          ));
+        }
+
+        if (results.length === 0) {
+          resultsContainer.innerHTML = `
+            <div class="text-center p-4">
+              <i class="fas fa-search fa-2x mb-2" style="color: #666;"></i>
+              <p>Nenhum resultado encontrado para "${query}"</p>
+            </div>
+          `;
+          return;
+        }
+
+        resultsContainer.innerHTML = '';
+        results.slice(0, 50).forEach(item => {
+          const searchItem = document.createElement('div');
+          searchItem.className = 'search-item';
+          
+          const iconStyle = item.icon ? `background-image: url('${item.icon}'); background-size: cover; background-position: center;` : '';
+          
+          searchItem.innerHTML = `
+            <div class="item-icon" style="${iconStyle}">
+              ${!item.icon ? item.letter : ''}
+            </div>
+            <div class="item-info">
+              <div class="item-name">${item.name}</div>
+              <div class="item-type">${this.getTypeLabel(item.type)}</div>
+            </div>
+          `;
+
+          searchItem.addEventListener('click', () => {
+            // Close search modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
+            modal.hide();
+            
+            // Play the selected item
+            if (item.type === 'channel') {
+              this.showContentSection('channels');
+              this.playChannel(item);
+            } else if (item.type === 'movie') {
+              this.showContentSection('movies');
+              this.playMovie(item);
+            } else if (item.type === 'series') {
+              this.showContentSection('series');
+              this.showSeriesEpisodes(item);
+            } else if (item.type === 'radio') {
+              this.showContentSection('radios');
+              this.playRadio(item);
+            }
+            
+            // Update navigation
+            document.querySelectorAll('.main-nav .nav-link').forEach(l => l.classList.remove('active'));
+            const targetContent = item.type === 'channel' ? 'channels' : 
+                                 item.type === 'movie' ? 'movies' : 
+                                 item.type === 'series' ? 'series' : 'radios';
+            document.querySelector(`[data-content="${targetContent}"]`).classList.add('active');
+          });
+
+          resultsContainer.appendChild(searchItem);
+        });
+      }
+
+      getTypeLabel(type) {
+        const labels = {
+          'channel': 'Canal',
+          'movie': 'Filme',
+          'series': 'Série',
+          'radio': 'Rádio'
+        };
+        return labels[type] || type;
+      }
+
+      async savePlaylist() {
+        try {
+          const url = document.getElementById('playlistUrl').value.trim();
+          if (!url) {
+            this.showError('Por favor, insira uma URL válida');
+            return;
+          }
+
+          const newConfig = this.extractPlaylistInfo(url);
+          this.config = newConfig;
+          this.saveConfig();
+
+          const modal = bootstrap.Modal.getInstance(document.getElementById('playlistModal'));
+          modal.hide();
+          document.getElementById('playlistForm').reset();
+
+          // Clear cache when changing playlist
+          this.cache.clear();
+
+          await Promise.all([
+            this.loadCategories(),
+            this.loadMovieCategories(),
+            this.loadSeriesCategories()
+          ]);
+
+          this.showSuccess('Playlist adicionada com sucesso!');
+        } catch (error) {
+          console.error('Erro ao salvar playlist:', error);
+          this.showError(error.message);
+        }
+      }
+
+      extractPlaylistInfo(url) {
+        try {
+          const urlObj = new URL(url);
+          const server = `${urlObj.protocol}//${urlObj.host}`;
+          const username = urlObj.searchParams.get('username');
+          const password = urlObj.searchParams.get('password');
+
+          if (!username || !password) {
+            throw new Error('Username ou password não encontrado na URL');
+          }
+
+          return { server, username, password };
+        } catch (error) {
+          throw new Error('URL inválida. Verifique se contém username e password.');
+        }
+      }
+
+      shareApp() {
+        const shareUrl = window.location.href;
+        
+        if (navigator.share) {
+          navigator.share({
+            title: 'IPTV Player 3 - Canais, Filmes e Séries',
+            text: 'Assista canais brasileiros, filmes e séries online',
+            url: shareUrl
+          }).catch(console.error);
+        } else {
+          navigator.clipboard.writeText(shareUrl).then(() => {
+            this.showSuccess('Link copiado para a área de transferência!');
+          }).catch(() => {
+            this.showError('Não foi possível copiar o link');
+          });
+        }
+      }
+
+      showErrorOverlay(message, retryCallback) {
+        const overlay = document.getElementById('errorOverlay');
+        const messageEl = document.getElementById('errorMessage');
+        
+        messageEl.textContent = message;
+        this.pendingRetryAction = retryCallback;
+        overlay.style.display = 'flex';
+      }
+
+      showError(message) {
+        this.showAlert('Erro', message, 'error');
+      }
+
+      showSuccess(message) {
+        this.showAlert('Sucesso', message, 'success');
+      }
+
+      showAlert(title, message, type = 'info') {
+        // Remove existing alerts
+        document.querySelectorAll('.custom-alert, .alert-backdrop').forEach(el => el.remove());
+
+        // Create backdrop
+        const backdrop = document.createElement('div');
+        backdrop.className = 'alert-backdrop';
+        backdrop.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.8);
+          z-index: 9998;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        `;
+
+        // Create alert
+        const alert = document.createElement('div');
+        alert.className = 'custom-alert';
+        alert.style.cssText = `
+          background: var(--bg-tertiary);
+          color: white;
+          padding: 2rem;
+          border-radius: 1rem;
+          text-align: center;
+          max-width: 90%;
+          width: 400px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        `;
+
+        const iconColor = type === 'error' ? '#EF4444' : type === 'success' ? '#10B981' : '#6B7280';
+        const iconName = type === 'error' ? 'exclamation-triangle' : type === 'success' ? 'check-circle' : 'info-circle';
+
+        alert.innerHTML = `
+          <i class="fas fa-${iconName} fa-3x mb-3" style="color: ${iconColor}"></i>
+          <h5 class="mb-3">${title}</h5>
+          <p class="mb-4">${message}</p>
+          <button class="btn btn-${type === 'error' ? 'danger' : 'success'}" onclick="this.closest('.alert-backdrop').remove()">
+            OK
+          </button>
+        `;
+
+        backdrop.appendChild(alert);
+        document.body.appendChild(backdrop);
+
+        // Auto remove after 5 seconds for success messages
+        if (type === 'success') {
+          setTimeout(() => {
+            if (backdrop.parentNode) {
+              backdrop.remove();
+            }
+          }, 5000);
+        }
+      }
+
+      async loadGames() {
+        try {
+          const games = [
+          // 'Solicitar radios! @IPTVPlayerOficial',
+          //  '🏀 Lakers x Warriors - 22:00', 
+          //  '🎾 Roland Garros - Ao Vivo',
+          //  '🏁 Fórmula 1 - Grande Prêmio',
+          //  '⚽ Champions League - 16:00',
+          //  '🏐 Vôlei Brasil x Argentina',
+          //  '🎯 Copa América - Semifinal'
+          ];
+          
+          const gamesScroll = document.getElementById('gamesScroll');
+          gamesScroll.textContent = games.join(' • ');
+        } catch (error) {
+          console.error('Erro ao carregar jogos:', error);
+        }
+      }
+    }
+
+    // Initialize app when DOM is loaded
+    let iptvApp;
+    document.addEventListener('DOMContentLoaded', () => {
+      // Proteção adicional contra cópia de texto
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+      
+      document.addEventListener('keydown', function(e) {
+        // Impede Ctrl+C, Ctrl+A, Ctrl+S, Ctrl+U, F12, etc.
+        if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 65 || e.keyCode === 83 || e.keyCode === 85)) {
+          e.preventDefault();
+          return false;
+        }
+        // Impede F12 (DevTools)
+        if (e.keyCode === 123) {
+          e.preventDefault();
+          return false;
+        }
+      });
+      
+      document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+      });
+      
+      document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+      });
+      loadTheme();
+      iptvApp = new IPTVApp();
+    });
+  </script>
+
+</body>
+</html>
