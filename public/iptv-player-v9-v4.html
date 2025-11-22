@@ -436,7 +436,7 @@
       cursor: not-allowed;
     }
     
-    /* GUIAS DE NAVEGAÇÃO PRINCIPAIS */
+    /* GUIAS DE NAVEGAÇÃO PRINCIPAIS - LOGO ABAIXO DO HEADER */
     .main-nav {
       background-color: var(--bg-secondary);
       padding: 0.5rem 0;
@@ -444,6 +444,7 @@
       overflow-x: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
+      width: 100%;
     }
     .main-nav::-webkit-scrollbar {
       display: none;
@@ -779,21 +780,24 @@
       display: block;
     }
     
-    /* Layout padrão - seções abaixo da navegação */
+    /* Layout landscape - player e lista lado a lado */
     .main-content {
       display: flex;
-      flex-direction: column;
-      width: 100%;
+      flex: 1;
+      overflow: hidden;
     }
     
     .video-section {
-      width: 100%;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
     }
     
     .content-section-landscape {
-      width: 100%;
+      width: 50%;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
     
     /* Favorites horizontal scroll styles */
@@ -1200,6 +1204,21 @@
         flex-shrink: 0;
       }
       
+      .main-nav {
+        position: sticky !important;
+        top: 60px !important;
+        z-index: 1000 !important;
+        flex-shrink: 0;
+        padding: 0.3rem 0;
+        border-bottom: 1px solid var(--bg-quaternary);
+      }
+      
+      .main-nav .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+      
       .main-content {
         display: flex;
         flex: 1;
@@ -1211,7 +1230,7 @@
         display: flex;
         flex-direction: column;
         min-width: 0;
-        height: calc(100vh - 60px); /* Desconto altura do header */
+        height: calc(100vh - 112px); /* Desconto altura do header + nav */
       }
       
       .content-section-landscape {
@@ -1220,7 +1239,7 @@
         flex-direction: column;
         border-left: 2px solid var(--bg-quaternary);
         background: var(--bg-secondary);
-        height: calc(100vh - 60px);
+        height: calc(100vh - 112px); /* Desconto altura do header + nav */
         overflow: hidden;
       }
       
@@ -1229,19 +1248,6 @@
         height: 100%;
         flex: 1;
         min-height: 0;
-      }
-      
-      .main-nav {
-        order: 1;
-        flex-shrink: 0;
-        padding: 0.3rem 0;
-        border-bottom: 1px solid var(--bg-quaternary);
-      }
-      
-      .main-nav .nav-link {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
-        font-weight: 500;
       }
       
       .tab-bar {
@@ -1724,6 +1730,37 @@
       </div>
     </div>
 
+    <!-- Main Navigation - LOGO ABAIXO DO HEADER -->
+    <div class="main-nav">
+      <ul class="nav nav-tabs d-flex justify-content-center">
+        <li class="nav-item">
+          <button class="nav-link active" data-content="channels">
+            <i class="fas fa-broadcast-tower me-1"></i>Canais
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-content="movies">
+            <i class="fas fa-film me-1"></i>Filmes
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-content="series">
+            <i class="fas fa-tv me-1"></i>Séries
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-content="radios">
+            <i class="fas fa-radio me-1"></i>Rádios
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-content="favorites">
+            <i class="fas fa-heart me-1"></i>Favoritos
+          </button>
+        </li>
+      </ul>
+    </div>
+
     <!-- Main Content Container -->
     <div class="main-content">
       <!-- Video Section -->
@@ -1789,37 +1826,6 @@
               Próximo <i class="fas fa-step-forward"></i>
             </button>
           </div>
-        </div>
-        
-        <!-- Main Navigation -->
-        <div class="main-nav">
-          <ul class="nav nav-tabs d-flex justify-content-center">
-            <li class="nav-item">
-              <button class="nav-link active" data-content="channels">
-                <i class="fas fa-broadcast-tower me-1"></i>Canais
-              </button>
-            </li>
-            <li class="nav-item">
-              <button class="nav-link" data-content="movies">
-                <i class="fas fa-film me-1"></i>Filmes
-              </button>
-            </li>
-            <li class="nav-item">
-              <button class="nav-link" data-content="series">
-                <i class="fas fa-tv me-1"></i>Séries
-              </button>
-            </li>
-            <li class="nav-item">
-              <button class="nav-link" data-content="radios">
-                <i class="fas fa-radio me-1"></i>Rádios
-              </button>
-            </li>
-            <li class="nav-item">
-              <button class="nav-link" data-content="favorites">
-                <i class="fas fa-heart me-1"></i>Favoritos
-              </button>
-            </li>
-          </ul>
         </div>
       </div>
 
