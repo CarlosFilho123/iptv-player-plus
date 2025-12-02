@@ -82,11 +82,6 @@
     }
     html, body {
       background-color: var(--bg-primary);
-      background-image: url('/images/background.png');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
       color: var(--text-primary);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
@@ -779,26 +774,6 @@
       display: block;
     }
     
-    /* Layout landscape - player e lista lado a lado */
-    .main-content {
-      display: flex;
-      flex: 1;
-      overflow: hidden;
-    }
-    
-    .video-section {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .content-section-landscape {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    
     /* Favorites horizontal scroll styles */
     .favorites-horizontal-scroll {
       display: flex;
@@ -1199,15 +1174,14 @@
         position: sticky !important;
         top: 0 !important;
         z-index: 1001 !important;
-        order: -1 !important; /* Sempre primeiro elemento - no topo */
         flex-shrink: 0;
       }
       
       .main-nav {
-        order: 1;
         flex-shrink: 0;
         padding: 0.3rem 0;
         border-bottom: 1px solid var(--bg-quaternary);
+        width: 100%;
       }
       
       .main-nav .nav-link {
@@ -1227,7 +1201,7 @@
         display: flex;
         flex-direction: column;
         min-width: 0;
-        height: calc(100vh - 60px); /* Desconto altura do header */
+        height: calc(100vh - 112px); /* Desconto altura do header + nav */
       }
       
       .content-section-landscape {
@@ -1236,7 +1210,7 @@
         flex-direction: column;
         border-left: 2px solid var(--bg-quaternary);
         background: var(--bg-secondary);
-        height: calc(100vh - 60px);
+        height: calc(100vh - 112px); /* Desconto altura do header + nav */
         overflow: hidden;
       }
       
@@ -1248,7 +1222,6 @@
       }
       
       .tab-bar {
-        order: 2;
         flex-shrink: 0;
         padding: 0.3rem 0;
         border-bottom: 1px solid var(--bg-quaternary);
@@ -1266,7 +1239,6 @@
       }
       
       .content-list {
-        order: 3;
         max-height: none !important;
         flex: 1;
         overflow-y: auto;
