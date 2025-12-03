@@ -623,6 +623,51 @@
       color: var(--primary-color);
     }
     
+    /* Barra de informações do player - escondida em retrato */
+    .player-info-bar {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 70%, transparent 100%);
+      padding: 1rem 1.2rem;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 50;
+      color: white;
+    }
+    
+    .player-info-bar .channel-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .player-info-bar .channel-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--primary-color);
+    }
+    
+    .player-info-bar .time-display {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+    
+    .player-info-bar .program-name {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
     .search-results {
       max-height: 400px;
       overflow-y: auto;
@@ -1161,7 +1206,7 @@
     .theme-azul { color: #007bff; }
     .theme-vermelho { color: #dc3545; }
     
-    /* Layout Paisagem - SUPER OTIMIZADO E HEADER SEMPRE NO TOPO */
+    /* Layout Paisagem - LISTA À ESQUERDA, PLAYER À DIREITA (como UniTV) */
     @media (orientation: landscape) and (min-width: 768px) {
       .app-container {
         display: flex !important;
@@ -1175,31 +1220,58 @@
         top: 0 !important;
         z-index: 1001 !important;
         flex-shrink: 0;
+        padding: 0.5rem 1rem;
       }
       
       .main-nav {
         flex-shrink: 0;
-        padding: 0.3rem 0;
-        border-bottom: 1px solid var(--bg-quaternary);
+        padding: 0;
+        border-bottom: none;
         width: 100%;
         margin: 0;
+        background: transparent;
       }
       
       .main-nav .nav-tabs {
         padding: 0;
         margin: 0;
         width: 100%;
-        justify-content: center;
+        justify-content: flex-start;
+        gap: 0;
+        border-bottom: 2px solid rgba(255,255,255,0.1);
       }
       
       .main-nav .nav-link {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
-        font-weight: 500;
+        padding: 0.7rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 0;
+        color: var(--text-secondary);
+        border-bottom: 3px solid transparent;
+        margin-bottom: -2px;
+      }
+      
+      .main-nav .nav-link:hover {
+        color: var(--text-primary);
+        background: rgba(255,255,255,0.05);
+      }
+      
+      .main-nav .nav-link.active {
+        color: var(--primary-color);
+        background: transparent;
+        border-bottom: 3px solid var(--primary-color);
+        box-shadow: none;
+      }
+      
+      .main-nav .nav-link i {
+        display: none;
       }
       
       .main-content {
         display: flex;
+        flex-direction: row; /* Lista esquerda, player direita */
         flex: 1;
         overflow: hidden;
       }
@@ -1209,16 +1281,18 @@
         display: flex;
         flex-direction: column;
         min-width: 0;
-        height: calc(100vh - 112px);
+        height: calc(100vh - 100px);
+        position: relative;
       }
       
       .content-section-landscape {
-        flex: 0 0 420px;
+        flex: 0 0 300px;
         display: flex !important;
         flex-direction: column;
-        border-left: 2px solid var(--bg-quaternary);
+        border-right: 2px solid var(--bg-quaternary);
+        border-left: none;
         background: var(--bg-secondary);
-        height: calc(100vh - 112px);
+        height: calc(100vh - 100px);
         overflow: hidden;
       }
       
@@ -1231,6 +1305,7 @@
         align-items: center;
         justify-content: center;
         background: #000;
+        border-radius: 0;
       }
       
       #videoPlayer {
@@ -1240,21 +1315,34 @@
         object-fit: contain;
       }
       
+      /* Título da lista de conteúdo */
       .tab-bar {
         flex-shrink: 0;
-        padding: 0.3rem 0;
+        padding: 0.5rem 0.8rem;
         border-bottom: 1px solid var(--bg-quaternary);
+        background: var(--bg-tertiary);
+      }
+      
+      .tab-bar::before {
+        content: attr(data-title);
+        display: block;
+        font-weight: 700;
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+        color: var(--text-primary);
       }
       
       .tab-nav {
-        padding: 0 0.6rem;
-        gap: 0.4rem;
+        padding: 0;
+        gap: 0.3rem;
+        flex-wrap: wrap;
       }
       
       .tab-btn {
-        padding: 0.35rem 0.7rem;
-        font-size: 0.72rem;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
         font-weight: 500;
+        border-radius: 4px;
       }
       
       .content-list {
@@ -1262,6 +1350,7 @@
         flex: 1;
         overflow-y: auto;
         margin: 0;
+        background: var(--bg-tertiary);
       }
       
       .games-carousel {
@@ -1269,104 +1358,118 @@
       }
       
       .content-item {
-        padding: 0.5rem 0.7rem;
+        padding: 0.5rem 0.6rem;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+      
+      .content-item:hover {
+        background: rgba(255,255,255,0.08);
+        transform: none;
+      }
+      
+      .content-item.playing {
+        background: linear-gradient(90deg, rgba(var(--primary-rgb), 0.3), transparent);
+        border-left: 3px solid var(--primary-color);
       }
       
       .content-avatar {
-        width: 42px;
-        height: 42px;
-        margin-right: 0.7rem;
-        font-size: 0.9rem;
+        width: 36px;
+        height: 36px;
+        margin-right: 0.6rem;
+        font-size: 0.8rem;
+        border-radius: 6px;
       }
       
       .content-name {
-        font-size: 0.82rem;
+        font-size: 0.78rem;
         line-height: 1.3;
+        font-weight: 500;
       }
       
       .content-details {
-        font-size: 0.72rem;
+        font-size: 0.68rem;
         line-height: 1.2;
       }
       
       .playing-indicator {
-        font-size: 0.65rem;
-        padding: 0.2rem 0.5rem;
+        font-size: 0.6rem;
+        padding: 0.15rem 0.4rem;
       }
       
       .favorite-btn {
-        font-size: 1rem;
-        padding: 0.4rem;
+        font-size: 0.9rem;
+        padding: 0.3rem;
       }
       
       /* Player optimizations for landscape */
       .player-logo {
         width: 50px;
-        bottom: 18px;
-        left: 18px;
+        bottom: 50px;
+        right: 15px;
+        left: auto;
       }
       
       .radio-info-overlay {
-        top: 18px;
-        left: 18px;
-        max-width: 380px;
-        padding: 14px 18px;
+        top: 15px;
+        left: 15px;
+        max-width: 350px;
+        padding: 12px 16px;
       }
       
       .radio-logo-small {
-        width: 48px;
-        height: 48px;
+        width: 44px;
+        height: 44px;
       }
       
       .radio-name {
-        font-size: 1rem;
+        font-size: 0.95rem;
         line-height: 1.3;
       }
       
       .radio-frequency {
-        font-size: 0.82rem;
+        font-size: 0.8rem;
       }
       
       /* Custom controls positioning */
       .custom-controls {
-        bottom: 18px;
-        left: 18px;
-        right: 18px;
+        bottom: 50px;
+        left: 15px;
+        right: 15px;
         gap: 10px;
       }
       
       .control-btn {
-        padding: 7px 12px;
-        font-size: 0.75rem;
+        padding: 6px 10px;
+        font-size: 0.72rem;
       }
       
       /* Scroll optimization */
       .content-list::-webkit-scrollbar {
-        width: 5px;
+        width: 4px;
       }
       
       .content-list::-webkit-scrollbar-thumb {
-        background: #666;
+        background: #555;
         border-radius: 2px;
       }
       
       /* Episode list in landscape */
       .episode-list {
         grid-template-columns: 1fr !important;
-        gap: 0.6rem;
-        padding: 0.6rem;
+        gap: 0.5rem;
+        padding: 0.5rem;
         max-height: none !important;
         flex: 1;
         order: 3;
       }
       
       .episode-card {
-        padding: 0.7rem;
+        padding: 0.6rem;
       }
       
       .episode-back-button {
-        padding: 0.7rem;
-        margin: -0.6rem -0.6rem 0.6rem -0.6rem;
+        padding: 0.6rem;
+        margin: -0.5rem -0.5rem 0.5rem -0.5rem;
       }
       
       /* Hide content sections properly in landscape */
@@ -1386,14 +1489,50 @@
       }
       
       .search-item {
-        padding: 0.6rem;
+        padding: 0.5rem;
       }
       
       .search-item .item-icon {
-        width: 36px;
-        height: 36px;
-        margin-right: 0.8rem;
-        font-size: 0.8rem;
+        width: 32px;
+        height: 32px;
+        margin-right: 0.6rem;
+        font-size: 0.75rem;
+      }
+      
+      /* Barra de informações inferior */
+      .player-info-bar {
+        display: flex !important;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        padding: 1rem;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 50;
+      }
+      
+      .player-info-bar .channel-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      
+      .player-info-bar .channel-name {
+        font-weight: 700;
+        font-size: 1rem;
+      }
+      
+      .player-info-bar .program-name {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+      
+      .player-info-bar .time-display {
+        font-family: monospace;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
       }
     }
     
@@ -1813,6 +1952,15 @@
             <button class="control-btn" id="nextEpisodeBtn">
               Próximo <i class="fas fa-step-forward"></i>
             </button>
+          </div>
+          
+          <!-- Barra de informações inferior -->
+          <div class="player-info-bar" id="playerInfoBar">
+            <div class="channel-info">
+              <span class="channel-name" id="infoChannelName">---</span>
+              <span class="time-display" id="infoTime">--:--</span>
+            </div>
+            <div class="program-name" id="infoProgramName">Selecione um canal</div>
           </div>
         </div>
       </div>
@@ -2270,6 +2418,7 @@
           this.loadWatchProgress();
           this.initPlayer();
           this.setupEventListeners();
+          this.initClock(); // Inicializa o relógio
           
           await Promise.all([
             this.loadCategories(),
@@ -2283,6 +2432,30 @@
           console.error('Erro ao inicializar app:', error);
           this.showErrorOverlay('Erro ao inicializar aplicativo', () => this.init());
         }
+      }
+      
+      // Inicializa o relógio na barra de informações
+      initClock() {
+        const updateClock = () => {
+          const now = new Date();
+          const hours = now.getHours().toString().padStart(2, '0');
+          const minutes = now.getMinutes().toString().padStart(2, '0');
+          const seconds = now.getSeconds().toString().padStart(2, '0');
+          const timeElement = document.getElementById('infoTime');
+          if (timeElement) {
+            timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+          }
+        };
+        updateClock();
+        setInterval(updateClock, 1000);
+      }
+      
+      // Atualiza a barra de informações do player
+      updateInfoBar(channelName, programName) {
+        const channelEl = document.getElementById('infoChannelName');
+        const programEl = document.getElementById('infoProgramName');
+        if (channelEl) channelEl.textContent = channelName || '---';
+        if (programEl) programEl.textContent = programName || '';
       }
 
       initPlayer() {
@@ -3157,6 +3330,7 @@
           try {
             this.animateLogo(); // NOVA LINHA - Anima a logo
             this.currentChannel = channel.id;
+            this.currentChannelData = channel; // Salva dados do canal
             this.currentMovie = null;
             this.currentSeries = null;
             this.currentEpisode = null;
@@ -3177,6 +3351,9 @@
             this.hideCustomControls();
             this.hideRadioInfo();
             this.hideRadioVisualDisplay();
+            
+            // Atualizar barra de informações
+            this.updateInfoBar(channel.name || 'Canal', 'Ao Vivo');
           } catch (error) {
             console.error('Erro ao reproduzir canal:', error);
             this.showErrorOverlay('Erro ao reproduzir canal', () => this.playChannel(channel));
@@ -3217,6 +3394,9 @@
             this.hideCustomControls();
             this.hideRadioInfo();
             this.hideRadioVisualDisplay();
+            
+            // Atualizar barra de informações
+            this.updateInfoBar(movie.name || 'Filme', movie.category_name || 'Filmes');
           } catch (error) {
             console.error('Erro ao reproduzir filme:', error);
             this.showErrorOverlay('Erro ao reproduzir filme', () => this.playMovie(movie));
@@ -3283,6 +3463,9 @@
           
           this.renderRadios();
           this.hideCustomControls();
+          
+          // Atualizar barra de informações
+          this.updateInfoBar(radio.name || 'Rádio', radio.frequency || 'FM');
         } catch (error) {
           console.error('Erro ao reproduzir rádio:', error);
           this.showErrorOverlay('Erro ao reproduzir rádio', () => this.playRadio(radio));
